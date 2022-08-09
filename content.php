@@ -7,7 +7,7 @@ require_once "config/fungsi_rupiah.php";
 
 // fungsi untuk pengecekan status login user 
 // jika user belum login, alihkan ke halaman login dan tampilkan message = 1
-if (empty($_SESSION['username']) && empty($_SESSION['password'])){
+if (empty($_SESSION['username']) && empty($_SESSION['password'])) {
 	echo "<meta http-equiv='refresh' content='0; url=index.php?alert=1'>";
 }
 // jika user sudah login, maka jalankan perintah untuk pemanggilan file halaman konten
@@ -39,6 +39,17 @@ else {
 	}
 	// -----------------------------------------------------------------------------
 
+	// jika halaman konten yang dipilih obat keluar, panggil file view obat masuk
+	elseif ($_GET['module'] == 'obat_keluar') {
+		include "modules/obat-keluar/view.php";
+	}
+
+	// jika halaman konten yang dipilih form obat keluar, panggil file form obat keluar
+	elseif ($_GET['module'] == 'form_obat_keluar') {
+		include "modules/obat-keluar/form.php";
+	}
+	// -----------------------------------------------------------------------------
+
 	// jika halaman konten yang dipilih laporan stok, panggil file view laporan stok
 	elseif ($_GET['module'] == 'lap_stok') {
 		include "modules/lap-stok/view.php";
@@ -48,6 +59,12 @@ else {
 	// jika halaman konten yang dipilih laporan obat masuk, panggil file view laporan obat masuk
 	elseif ($_GET['module'] == 'lap_obat_masuk') {
 		include "modules/lap-obat-masuk/view.php";
+	}
+	// -----------------------------------------------------------------------------
+
+	// jika halaman konten yang dipilih laporan obat keluar, panggil file view laporan obat keluar
+	elseif ($_GET['module'] == 'lap_obat_keluar') {
+		include "modules/lap-obat-keluar/view.php";
 	}
 	// -----------------------------------------------------------------------------
 
@@ -72,10 +89,9 @@ else {
 		include "modules/profil/form.php";
 	}
 	// -----------------------------------------------------------------------------
-	
+
 	// jika halaman konten yang dipilih password, panggil file view password
 	elseif ($_GET['module'] == 'password') {
 		include "modules/password/view.php";
 	}
 }
-?>
