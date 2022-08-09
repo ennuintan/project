@@ -41,14 +41,14 @@ if ($_SESSION['hak_akses'] == 'Super Admin') { ?>
         // jika menu data obat masuk dipilih, menu data obat masuk aktif
         if ($_GET["module"] == "obat_masuk" || $_GET["module"] == "form_obat_masuk") { ?>
     <li class="active">
-        <a href="?module=obat_masuk"><i class="fa fa-clone"></i> Data Obat Masuk </a>
+        <a href="?module=obat_masuk"><i class="fa fa-sign-in"></i> Data Obat Masuk </a>
     </li>
     <?php
         }
         // jika tidak, menu data obat masuk tidak aktif
         else { ?>
     <li>
-        <a href="?module=obat_masuk"><i class="fa fa-clone"></i> Data Obat Masuk </a>
+        <a href="?module=obat_masuk"><i class="fa fa-sign-in"></i> Data Obat Masuk </a>
     </li>
     <?php
         }

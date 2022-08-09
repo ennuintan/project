@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-sign-in icon-title"></i> Data Obat Keluar
+        <i class="fa fa-sign-out icon-title"></i> Data Obat Keluar
 
         <a class="btn btn-primary btn-social pull-right" href="?module=form_obat_keluar&form=add" title="Tambah Data"
             data-toggle="tooltip">
@@ -42,12 +42,13 @@
                         <thead>
                             <tr>
                                 <th class="center">No.</th>
-                                <th class="center">Kode Transaksi</th>
-                                <th class="center">Tanggal</th>
+                                <th class="center">Tanggal Exp</th>
+                                <th class="center">Tanggal Keluar</th>
                                 <th class="center">Kode Obat</th>
                                 <th class="center">Nama Obat</th>
                                 <th class="center">Jumlah Keluar</th>
                                 <th class="center">Satuan</th>
+                                <th class="center">Action</th>
                             </tr>
                         </thead>
                         <!-- tampilan tabel body -->
@@ -74,6 +75,19 @@
                       <td width='200'>$data[nama_obat]</td>
                       <td width='100' align='center'>$data[jumlah_keluar]</td>
                       <td width='80' class='center'>$data[satuan]</td>
+                      <td class='center' width='80'>
+                        <div>
+                          <a data-toggle='tooltip' data-placement='top' title='Ubah' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_obat&form=edit&id=$data[kode_obat]'>
+                              <i style='color:#fff' class='glyphicon glyphicon-edit'></i>
+                          </a>";
+                            ?>
+                            <a data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger btn-sm"
+                                href="modules/obat/proses.php?act=delete&id=<?php echo $data['kode_obat']; ?>"
+                                onclick="return confirm('Anda yakin ingin menghapus obat <?php echo $data['nama_obat']; ?> ?');">
+                                <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
+                            </a>
+                            <?php
+                                echo "    </div>
                     </tr>";
                                 $no++;
                             }

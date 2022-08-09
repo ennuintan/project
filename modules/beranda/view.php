@@ -38,7 +38,7 @@
                     $data = mysqli_fetch_assoc($query);
                     ?>
                     <h3><?php echo $data['jumlah']; ?></h3>
-                    <p>Data Obat</p>
+                    <p>Jumlah Nama Obat</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-plus"></i>
@@ -62,14 +62,14 @@
                 <div class="inner">
                     <?php
                     // fungsi query untuk menampilkan data dari tabel obat masuk
-                    $query = mysqli_query($mysqli, "SELECT COUNT(kode_transaksi) as jumlah FROM is_obat_masuk")
+                    $query = mysqli_query($mysqli, "SELECT sum(jumlah_masuk) as jumlah FROM is_obat_masuk")
                         or die('Ada kesalahan pada query tampil Data obat Masuk: ' . mysqli_error($mysqli));
 
                     // tampilkan data
                     $data = mysqli_fetch_assoc($query);
                     ?>
                     <h3><?php echo $data['jumlah']; ?></h3>
-                    <p>Data Obat Masuk</p>
+                    <p>Stok Obat Masuk</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-sign-in"></i>
@@ -93,7 +93,7 @@
                 <div class="inner">
                     <?php
                     // fungsi query untuk menampilkan data dari tabel obat
-                    $query = mysqli_query($mysqli, "SELECT COUNT(kode_obat) as jumlah FROM is_obat_keluar")
+                    $query = mysqli_query($mysqli, "SELECT sum(jumlah_keluar) as jumlah FROM is_obat_keluar")
                         or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
 
                     // tampilkan data
@@ -102,7 +102,7 @@
                     //tambahan perubahan 
                     ?>
                     <h3><?php echo $data['jumlah']; ?></h3>
-                    <p>Data Obat Keluar</p>
+                    <p>Stok Obat Keluar</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-sign-out"></i>
@@ -126,10 +126,10 @@
                 <div class="inner">
                     <?php
                     // fungsi query untuk menampilkan data dari tabel obat
-                    $query1 = mysqli_query($mysqli, "SELECT COUNT(kode_obat) as jumlah FROM is_obat_masuk")
+                    $query1 = mysqli_query($mysqli, "SELECT sum(jumlah_masuk) as jumlah FROM is_obat_masuk")
                         or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
 
-                    $query2 = mysqli_query($mysqli, "SELECT COUNT(kode_obat) as jumlah FROM is_obat_keluar")
+                    $query2 = mysqli_query($mysqli, "SELECT sum(jumlah_keluar) as jumlah FROM is_obat_keluar")
                         or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
 
                     // tampilkan data
@@ -138,8 +138,8 @@
 
                     //tambahan perubahan 
                     ?>
-                    <h3><?php echo $data['jumlah'] - $data['jumlah']; ?></h3>
-                    <p>Jumlah Akhir Obat</p>
+                    <h3><?php echo $data1['jumlah'] - $data2['jumlah'] ?></h3>
+                    <p>Jumlah Akhir Stok Obat</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-folder"></i>

@@ -65,7 +65,7 @@
                                 <th class="center">Golongan Obat</th>
                                 <th class="center">Stok</th>
                                 <th class="center">Satuan</th>
-                                <th></th>
+                                <th class="center">Action</th>
                             </tr>
                         </thead>
                         <!-- tampilan tabel body -->
