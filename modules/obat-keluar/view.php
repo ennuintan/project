@@ -48,6 +48,7 @@
                                 <th class="center">Nama Obat</th>
                                 <th class="center">Jumlah Keluar</th>
                                 <th class="center">Satuan</th>
+                                <th class="center">User</th>
                                 <th class="center">Action</th>
                             </tr>
                         </thead>
@@ -56,8 +57,9 @@
                             <?php
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel obat
-                            $query = mysqli_query($mysqli, "SELECT a.kode_transaksi,a.tanggal_keluar,a.kode_obat,a.jumlah_keluar,b.kode_obat,b.nama_obat,b.satuan
-                                            FROM is_obat_keluar as a INNER JOIN is_obat as b ON a.kode_obat=b.kode_obat ORDER BY kode_transaksi DESC")
+                            $query = mysqli_query($mysqli, "SELECT a.kode_transaksi,a.tanggal_keluar,a.kode_obat,a.jumlah_keluar,b.kode_obat,b.nama_obat,b.satuan, c.nama_user
+                                            FROM is_obat_keluar as a JOIN is_obat as b ON a.kode_obat=b.kode_obat
+                                            JOIN is_users as c ON c.id_user = a.created_user ORDER BY kode_transaksi DESC")
                                 or die('Ada kesalahan pada query tampil Data Obat Keluar: ' . mysqli_error($mysqli));
 
                             // tampilkan data
@@ -75,6 +77,7 @@
                       <td width='200'>$data[nama_obat]</td>
                       <td width='100' align='center'>$data[jumlah_keluar]</td>
                       <td width='80' class='center'>$data[satuan]</td>
+                      <td width='80' class='center'>$data[nama_user]</td>
                       <td class='center' width='80'>
                         <div>
                           <a data-toggle='tooltip' data-placement='top' title='Ubah' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_obat&form=edit&id=$data[kode_obat]'>
