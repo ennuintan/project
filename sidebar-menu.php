@@ -191,6 +191,7 @@ elseif ($_SESSION['hak_akses'] == 'Manajer') { ?>
         <ul class="treeview-menu">
             <li class="active"><a href="?module=lap_stok"><i class="fa fa-circle-o"></i> Stok Obat </a></li>
             <li><a href="?module=lap_obat_masuk"><i class="fa fa-circle-o"></i> Obat Masuk </a></li>
+            <li><a href="?module=lap_obat_keluar"><i class="fa fa-circle-o"></i> Obat Keluar </a></li>
         </ul>
     </li>
     <?php
@@ -204,10 +205,25 @@ elseif ($_SESSION['hak_akses'] == 'Manajer') { ?>
         <ul class="treeview-menu">
             <li><a href="?module=lap_stok"><i class="fa fa-circle-o"></i> Stok Obat </a></li>
             <li class="active"><a href="?module=lap_obat_masuk"><i class="fa fa-circle-o"></i> Obat Masuk </a></li>
+            <li><a href="?module=lap_obat_keluar"><i class="fa fa-circle-o"></i> Obat Keluar </a></li>
         </ul>
     </li>
     <?php
         }
+        // jika menu Laporan obat Keluar dipilih, menu Laporan obat Keluar aktif
+        elseif ($_GET["module"] == "lap_obat_keluar") { ?>
+            <li class="active treeview">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-file-text"></i> <span>Laporan</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="?module=lap_stok"><i class="fa fa-circle-o"></i> Stok Obat </a></li>
+                    <li><a href="?module=lap_obat_masuk"><i class="fa fa-circle-o"></i> Obat Masuk </a></li>
+                    <li class="active"><a href="?module=lap_obat_keluar"><i class="fa fa-circle-o"></i> Obat Keluar </a></li>
+                </ul>
+            </li>
+            <?php
+                }
         // jika menu Laporan tidak dipilih, menu Laporan tidak aktif
         else { ?>
     <li class="treeview">
@@ -217,6 +233,7 @@ elseif ($_SESSION['hak_akses'] == 'Manajer') { ?>
         <ul class="treeview-menu">
             <li><a href="?module=lap_stok"><i class="fa fa-circle-o"></i> Stok Obat </a></li>
             <li><a href="?module=lap_obat_masuk"><i class="fa fa-circle-o"></i> Obat Masuk </a></li>
+            <li><a href="?module=lap_obat_keluar"><i class="fa fa-circle-o"></i> Obat Keluar </a></li>
         </ul>
     </li>
     <?php
@@ -294,6 +311,21 @@ if ($_SESSION['hak_akses'] == 'Gudang') { ?>
     <?php
         }
 
+        // jika menu data obat keluar dipilih, menu data obat keluar aktif
+        if ($_GET["module"] == "obat_keluar" || $_GET["module"] == "form_obat_keluar") { ?>
+            <li class="active">
+                <a href="?module=obat_keluar"><i class="fa fa-clone"></i> Data Obat Keluar</a>
+            </li>
+            <?php
+                }
+                // jika tidak, menu data obat masuk tidak aktif
+                else { ?>
+            <li>
+                <a href="?module=obat_keluar"><i class="fa fa-clone"></i> Data Obat Keluar </a>
+            </li>
+            <?php
+                }
+
         // jika menu Laporan Stok obat dipilih, menu Laporan Stok obat aktif
         if ($_GET["module"] == "lap_stok") { ?>
     <li class="active treeview">
@@ -303,6 +335,7 @@ if ($_SESSION['hak_akses'] == 'Gudang') { ?>
         <ul class="treeview-menu">
             <li class="active"><a href="?module=lap_stok"><i class="fa fa-circle-o"></i> Stok Obat </a></li>
             <li><a href="?module=lap_obat_masuk"><i class="fa fa-circle-o"></i> Obat Masuk </a></li>
+            <li><a href="?module=lap_obat_keluar"><i class="fa fa-circle-o"></i> Obat Keluar </a></li>
         </ul>
     </li>
     <?php
@@ -316,10 +349,25 @@ if ($_SESSION['hak_akses'] == 'Gudang') { ?>
         <ul class="treeview-menu">
             <li><a href="?module=lap_stok"><i class="fa fa-circle-o"></i> Stok Obat </a></li>
             <li class="active"><a href="?module=lap_obat_masuk"><i class="fa fa-circle-o"></i> Obat Masuk </a></li>
+            <li><a href="?module=lap_obat_keluar"><i class="fa fa-circle-o"></i> Obat Keluar </a></li>
         </ul>
     </li>
     <?php
         }
+         // jika menu Laporan obat Keluar dipilih, menu Laporan obat Keluar aktif
+         elseif ($_GET["module"] == "lap_obat_keluar") { ?>
+            <li class="active treeview">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-file-text"></i> <span>Laporan</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="?module=lap_stok"><i class="fa fa-circle-o"></i> Stok Obat </a></li>
+                    <li><a href="?module=lap_obat_masuk"><i class="fa fa-circle-o"></i> Obat Masuk </a></li>
+                    <li class="active"><a href="?module=lap_obat_keluar"><i class="fa fa-circle-o"></i> Obat Keluar </a></li>
+                </ul>
+            </li>
+            <?php
+                }
         // jika menu Laporan tidak dipilih, menu Laporan tidak aktif
         else { ?>
     <li class="treeview">
@@ -329,6 +377,7 @@ if ($_SESSION['hak_akses'] == 'Gudang') { ?>
         <ul class="treeview-menu">
             <li><a href="?module=lap_stok"><i class="fa fa-circle-o"></i> Stok Obat </a></li>
             <li><a href="?module=lap_obat_masuk"><i class="fa fa-circle-o"></i> Obat Masuk </a></li>
+            <li><a href="?module=lap_obat_keluar"><i class="fa fa-circle-o"></i> Obat Keluar </a></li>
         </ul>
     </li>
     <?php
