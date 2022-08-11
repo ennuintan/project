@@ -17,13 +17,15 @@ else {
             $kode_obat  = mysqli_real_escape_string($mysqli, trim($_POST['kode_obat']));
             $nama_obat  = mysqli_real_escape_string($mysqli, trim($_POST['nama_obat']));
             $golongan_obat  = mysqli_real_escape_string($mysqli, trim($_POST['golongan_obat']));
+            $stok_obat       = mysqli_real_escape_string($mysqli, trim($_POST['stok_obat']));
             $satuan     = mysqli_real_escape_string($mysqli, trim($_POST['satuan']));
+
 
             $created_user = $_SESSION['id_user'];
 
             // perintah query untuk menyimpan data ke tabel obat
-            $query = mysqli_query($mysqli, "INSERT INTO is_obat(kode_obat,nama_obat,golongan_obat,satuan,created_user,updated_user) 
-                                            VALUES('$kode_obat','$nama_obat','$golongan_obat','$satuan','$created_user','$created_user')")
+            $query = mysqli_query($mysqli, "INSERT INTO is_obat(kode_obat,nama_obat,golongan_obat,stok,satuan,created_user,updated_user) 
+                                            VALUES('$kode_obat','$nama_obat','$golongan_obat','$stok_obat','$satuan','$created_user','$created_user')")
                 or die('Ada kesalahan pada query insert : ' . mysqli_error($mysqli));
 
             // cek query
@@ -39,6 +41,7 @@ else {
                 $kode_obat  = mysqli_real_escape_string($mysqli, trim($_POST['kode_obat']));
                 $nama_obat  = mysqli_real_escape_string($mysqli, trim($_POST['nama_obat']));
                 $golongan_obat  = mysqli_real_escape_string($mysqli, trim($_POST['golongan_obat']));
+                $stok_obat       = mysqli_real_escape_string($mysqli, trim($_POST['stok_obat']));
                 $satuan     = mysqli_real_escape_string($mysqli, trim($_POST['satuan']));
 
                 $updated_user = $_SESSION['id_user'];
@@ -46,6 +49,7 @@ else {
                 // perintah query untuk mengubah data pada tabel obat
                 $query = mysqli_query($mysqli, "UPDATE is_obat SET  nama_obat       = '$nama_obat',
                                                                     golongan_obat   = '$golongan_obat',
+                                                                    stok            = '$stok_obat',
                                                                     satuan          = '$satuan',
                                                                     updated_user    = '$updated_user'
                                                               WHERE kode_obat       = '$kode_obat'")

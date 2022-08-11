@@ -1,7 +1,7 @@
  <?php
-  // fungsi untuk pengecekan tampilan form
-  // jika form add data yang dipilih
-  if ($_GET['form'] == 'add') { ?>
+    // fungsi untuk pengecekan tampilan form
+    // jika form add data yang dipilih
+    if ($_GET['form'] == 'add') { ?>
  <!-- tampilan form add data -->
  <!-- Content Header (Page header) -->
  <section class="content-header">
@@ -24,25 +24,25 @@
                  <form role="form" class="form-horizontal" action="modules/obat/proses.php?act=insert" method="POST">
                      <div class="box-body">
                          <?php
-                // fungsi untuk membuat id transaksi
-                $query_id = mysqli_query($mysqli, "SELECT RIGHT(kode_obat,6) as kode FROM is_obat
+                                // fungsi untuk membuat id transaksi
+                                $query_id = mysqli_query($mysqli, "SELECT RIGHT(kode_obat,6) as kode FROM is_obat
                                                 ORDER BY kode_obat DESC LIMIT 1")
-                  or die('Ada kesalahan pada query tampil kode_obat : ' . mysqli_error($mysqli));
+                                    or die('Ada kesalahan pada query tampil kode_obat : ' . mysqli_error($mysqli));
 
-                $count = mysqli_num_rows($query_id);
+                                $count = mysqli_num_rows($query_id);
 
-                if ($count <> 0) {
-                  // mengambil data kode_obat
-                  $data_id = mysqli_fetch_assoc($query_id);
-                  $kode    = $data_id['kode'] + 1;
-                } else {
-                  $kode = 1;
-                }
+                                if ($count <> 0) {
+                                    // mengambil data kode_obat
+                                    $data_id = mysqli_fetch_assoc($query_id);
+                                    $kode    = $data_id['kode'] + 1;
+                                } else {
+                                    $kode = 1;
+                                }
 
-                // buat kode_obat
-                $buat_id   = str_pad($kode, 6, "0", STR_PAD_LEFT);
-                $kode_obat = "B$buat_id";
-                ?>
+                                // buat kode_obat
+                                $buat_id   = str_pad($kode, 6, "0", STR_PAD_LEFT);
+                                $kode_obat = "B$buat_id";
+                                ?>
 
                          <div class="form-group">
                              <label class="col-sm-2 control-label">Kode Obat</label>
@@ -64,6 +64,13 @@
                              <div class="col-sm-5">
                                  <input type="text" class="form-control" name="golongan_obat" autocomplete="off"
                                      required>
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             <label class="col-sm-2 control-label">Stok obat</label>
+                             <div class="col-sm-5">
+                                 <input type="text" class="form-control" name="stok_obat" autocomplete="off" required>
                              </div>
                          </div>
 
@@ -99,17 +106,17 @@
      </div> <!-- /.row -->
  </section><!-- /.content -->
  <?php
-  }
-  // jika form edit data yang dipilih
-  // isset : cek data ada / tidak
-  elseif ($_GET['form'] == 'edit') {
-    if (isset($_GET['id'])) {
-      // fungsi query untuk menampilkan data dari tabel obat
-      $query = mysqli_query($mysqli, "SELECT kode_obat,nama_obat,golongan_obat,satuan FROM is_obat WHERE kode_obat='$_GET[id]'")
-        or die('Ada kesalahan pada query tampil Data obat : ' . mysqli_error($mysqli));
-      $data  = mysqli_fetch_assoc($query);
     }
-  ?>
+    // jika form edit data yang dipilih
+    // isset : cek data ada / tidak
+    elseif ($_GET['form'] == 'edit') {
+        if (isset($_GET['id'])) {
+            // fungsi query untuk menampilkan data dari tabel obat
+            $query = mysqli_query($mysqli, "SELECT kode_obat,nama_obat,golongan_obat,stok,satuan FROM is_obat WHERE kode_obat='$_GET[id]'")
+                or die('Ada kesalahan pada query tampil Data obat : ' . mysqli_error($mysqli));
+            $data  = mysqli_fetch_assoc($query);
+        }
+    ?>
  <!-- tampilan form edit data -->
  <!-- Content Header (Page header) -->
  <section class="content-header">
@@ -157,6 +164,14 @@
                          </div>
 
                          <div class="form-group">
+                             <label class="col-sm-2 control-label">Stok obat</label>
+                             <div class="col-sm-5">
+                                 <input type="text" class="form-control" name="stok_obat" autocomplete="off"
+                                     value="<?php echo $data['stok']; ?>" required>
+                             </div>
+                         </div>
+
+                         <div class="form-group">
                              <label class="col-sm-2 control-label">Satuan</label>
                              <div class="col-sm-5">
                                  <select class="chosen-select" name="satuan" data-placeholder="-- Pilih --"
@@ -189,5 +204,5 @@
      </div> <!-- /.row -->
  </section><!-- /.content -->
  <?php
-  }
-  ?>
+    }
+    ?>
