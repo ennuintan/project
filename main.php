@@ -7,14 +7,14 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel | Aplikasi Persediaan Obat</title>
+    <title>Admin | Sistem Informasi Manajemen Obat dan BHP (Barang Habis Pakai)</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="Aplikasi Persediaan Obat pada Apotek">
-    <meta name="author" content="Indra Styawantoro" />
+    <meta name="description" content="Sistem Informasi Manajemen Obat dan BHP (Barang Habis Pakai)">
+    <meta name="author" content="user" />
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.png" />
+    <link rel="shortcut icon" href="assets/img/kkp.png" />
 
     <!-- Bootstrap 3.3.2 -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -86,9 +86,9 @@ session_start();
         <header class="main-header">
             <!-- Logo -->
             <a href="?module=beranda" class="logo">
-                <img style="margin-top:-15px;margin-right:5px" src="assets/img/apotek.png" width="50" height="40"
+                <img style="margin-top:-15px;margin-right:5px" src="assets/img/kkp.png" width="50" height="40"
                     alt="Logo">
-                <span style="font-size:30px">Apotek</span>
+                <span style="font-size:25px">SIM-OBHP</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -150,8 +150,7 @@ session_start();
         <footer class="main-footer">
             <strong>Copyright &copy; <script>
                 document.write(new Date().getFullYear())
-                </script></strong>
-
+                </script> <p align="left">Kantor Kesehatan Pelabuhan</p></strong> 
         </footer>
     </div><!-- ./wrapper -->
 

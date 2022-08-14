@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login | Aplikasi Persediaan Obat</title>
+    <title>Login | Sistem Informasi Manajemen Obat dan BHP</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="Aplikasi Persediaan Obat pada Apotek">
-    <meta name="author" content="Indra Styawantoro" />
+    <meta name="description" content="Sistem Informasi Manajemen Obat dan BHP">
+    <meta name="author" content="user" />
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.png" />
+    <link rel="shortcut icon" href="assets/img/kkp.png" />
 
     <!-- Bootstrap 3.3.2 -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -28,7 +28,9 @@
 <body class="login-page bg-login">
     <div class="login-box">
         <div style="color:#3c8dbc" class="login-logo">
-            <img style="margin-top:-12px" src="assets/img/logo-blue.png" alt="Logo" height="50"> <b>Apotek</b>
+            <img style="margin-top:-12px" src="assets/img/kkp.png" alt="Logo" height="110"> 
+            <h3><b> SISTEM INFORMASI </b></h3> 
+            <h3><b> MANAJEMEN OBAT DAN BHP </b></h3>
         </div><!-- /.login-logo -->
         <?php
     // fungsi untuk menampilkan pesan

@@ -16,8 +16,8 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <p style="font-size:15px">
                     <i class="icon fa fa-user"></i> Selamat datang
-                    <strong><?php echo $_SESSION['nama_user']; ?></strong> di Sistem Informasi keluar masuk obat dan
-                    BHP.
+                    <strong><?php echo $_SESSION['nama_user']; ?></strong> di Sistem Informasi Manajemen obat dan
+                    BHP(Barang habis Pakai).
                 </p>
             </div>
         </div>
