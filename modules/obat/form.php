@@ -45,7 +45,7 @@
                                 ?>
 
                          <div class="form-group">
-                             <label class="col-sm-2 control-label">Kode Obat</label>
+                             <label class="col-sm-2 control-label">Kode</label>
                              <div class="col-sm-5">
                                  <input type="text" class="form-control" name="kode_obat"
                                      value="<?php echo $kode_obat; ?>" readonly required>
@@ -53,22 +53,32 @@
                          </div>
 
                          <div class="form-group">
-                             <label class="col-sm-2 control-label">Nama obat</label>
+                             <label class="col-sm-2 control-label">Nama</label>
                              <div class="col-sm-5">
                                  <input type="text" class="form-control" name="nama_obat" autocomplete="off" required>
                              </div>
                          </div>
 
                          <div class="form-group">
-                             <label class="col-sm-2 control-label">Golongan obat</label>
+                             <label class="col-sm-2 control-label">Golongan</label>
                              <div class="col-sm-5">
-                                 <input type="text" class="form-control" name="golongan_obat" autocomplete="off"
-                                     required>
+                                 <select class="chosen-select" name="golongan_obat" data-placeholder="-- Pilih --"
+                                     autocomplete="off" required>
+                                     <option value=""></option>
+                                     <option value="Obat Keras">Obat Keras</option>
+                                     <option value="Obat Herbal">Obat Herbal</option>
+                                     <option value="Obat Bebas">Obat Bebas</option>
+                                     <option value="Obat Bebas Terbatas">Obat Bebas Terbatas</option>
+                                     <option value="Obat Golongan Narkotika">Obat Golongan Narkotika</option>
+                                     <option value="Obat Fitofarmaka">Obat Fitofarmaka</option>
+                                     <option value="Obat Herbal Tersandart (OHT)">Obat Herbal Tersandart (OHT)</option>
+                                     <option value="BHP">BHP</option>
+                                 </select>
                              </div>
                          </div>
 
                          <div class="form-group">
-                             <label class="col-sm-2 control-label">Stok obat</label>
+                             <label class="col-sm-2 control-label">Stok</label>
                              <div class="col-sm-5">
                                  <input type="text" class="form-control" name="stok_obat" autocomplete="off" required>
                              </div>
@@ -85,6 +95,7 @@
                                      <option value="Kotak">Kotak</option>
                                      <option value="Strip">Strip</option>
                                      <option value="Tube">Tube</option>
+                                     <option value="Pcs">Pcs</option>
                                  </select>
                              </div>
                          </div>
@@ -140,7 +151,7 @@
                      <div class="box-body">
 
                          <div class="form-group">
-                             <label class="col-sm-2 control-label">Kode Obat</label>
+                             <label class="col-sm-2 control-label">Kode</label>
                              <div class="col-sm-5">
                                  <input type="text" class="form-control" name="kode_obat"
                                      value="<?php echo $data['kode_obat']; ?>" readonly required>
@@ -148,7 +159,7 @@
                          </div>
 
                          <div class="form-group">
-                             <label class="col-sm-2 control-label">Nama obat</label>
+                             <label class="col-sm-2 control-label">Nama</label>
                              <div class="col-sm-5">
                                  <input type="text" class="form-control" name="nama_obat" autocomplete="off"
                                      value="<?php echo $data['nama_obat']; ?>" required>
@@ -156,10 +167,22 @@
                          </div>
 
                          <div class="form-group">
-                             <label class="col-sm-2 control-label">Golongan obat</label>
+                             <label class="col-sm-2 control-label">Golongan</label>
                              <div class="col-sm-5">
-                                 <input type="text" class="form-control" name="golongan_obat" autocomplete="off"
-                                     value="<?php echo $data['golongan_obat']; ?>" required>
+                                 <select class="chosen-select" name="golongan_obat" data-placeholder="-- Pilih --"
+                                     autocomplete="off" required>
+                                     <option value="<?php echo $data['golongan_obat']; ?>">
+                                         <?php echo $data['golongan_obat']; ?>
+                                     </option>
+                                     <option value="Obat Keras">Obat Keras</option>
+                                     <option value="Obat Herbal">Obat Herbal</option>
+                                     <option value="Obat Bebas">Obat Bebas</option>
+                                     <option value="Obat Bebas Terbatas">Obat Bebas Terbatas</option>
+                                     <option value="Obat Golongan Narkotika">Obat Golongan Narkotika</option>
+                                     <option value="Obat Fitofarmaka">Obat Fitofarmaka</option>
+                                     <option value="Obat Herbal Tersandart (OHT)">Obat Herbal Tersandart (OHT)</option>
+                                     <option value="BHP">BHP</option>
+                                 </select>
                              </div>
                          </div>
 

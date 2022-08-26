@@ -2,12 +2,12 @@
 <section class="content-header">
     <h1>
         <i class="fa fa-file-text-o icon-title"></i> Laporan Stok Obat
-
-        <a class="btn btn-primary btn-social pull-right" href="modules/lap-stok/cetak.php" target="_blank">
-            <i class="fa fa-print"></i> Cetak
-        </a>
     </h1>
-
+    <ol class="breadcrumb">
+        <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda</a></li>
+        <li class="active">Laporan</li>
+        <li class="active">Stok Obat</li>
+    </ol>
 </section>
 
 <!-- Main content -->
@@ -21,36 +21,35 @@
                         <!-- tampilan tabel header -->
                         <thead>
                             <tr>
-                                <th class="center">No.</th>
-                                <th class="center">Kode Obat</th>
-                                <th class="center">Nama Obat</th>
-                                <th class="center">Stok</th>
-                                <th class="center">Satuan</th>
+                                <th>No.</th>
+                                <th>Kode Obat</th>
+                                <th>Nama Obat</th>
+                                <th>Stok</th>
+                                <th>Satuan</th>
                             </tr>
                         </thead>
                         <!-- tampilan tabel body -->
                         <tbody>
                             <?php
-              $no = 1;
-              // fungsi query untuk menampilkan data dari tabel obat
-              $query = mysqli_query($mysqli, "SELECT kode_obat,nama_obat,satuan,stok FROM is_obat ORDER BY nama_obat ASC")
-                or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
-
-              // tampilkan data
-              while ($data = mysqli_fetch_assoc($query)) {
-                // $harga_beli = format_rupiah($data['harga_beli']);
-                // $harga_jual = format_rupiah($data['harga_jual']);
-                // menampilkan isi tabel dari database ke tabel di aplikasi
-                echo "<tr>
-                      <td width='30' class='center'>$no</td>
-                      <td width='80' class='center'>$data[kode_obat]</td>
-                      <td width='180'>$data[nama_obat]</td>
-                      <td width='80' align='right'>$data[stok]</td>
-                      <td width='80' class='center'>$data[satuan]</td>
+                            $no = 1;
+                            // fungsi query untuk menampilkan data dari tabel obat
+                            $query = mysqli_query($mysqli, "SELECT kode_obat,nama_obat,satuan,stok FROM is_obat ORDER BY nama_obat ASC")
+                                or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
+                            // tampilkan data
+                            while ($data = mysqli_fetch_assoc($query)) {
+                                // $harga_beli = format_rupiah($data['harga_beli']);
+                                // $harga_jual = format_rupiah($data['harga_jual']);
+                                // menampilkan isi tabel dari database ke tabel di aplikasi
+                                echo "<tr>
+                      <td>$no</td>
+                      <td>$data[kode_obat]</td>
+                      <td>$data[nama_obat]</td>
+                      <td>$data[stok]</td>
+                      <td>$data[satuan]</td>
                     </tr>";
-                $no++;
-              }
-              ?>
+                                $no++;
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div><!-- /.box-body -->
@@ -58,4 +57,29 @@
         </div>
         <!--/.col -->
     </div> <!-- /.row -->
-</section><!-- /.content
+</section>
+
+<!-- DataTables -->
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" /> -->
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" /> -->
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#example1').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+});
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>

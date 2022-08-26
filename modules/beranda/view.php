@@ -157,6 +157,139 @@
             </div>
         </div><!-- ./col -->
 
+        <!-- Data BHP -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div style="background-color:#008b8b;color:#fff" class="small-box">
+                <div class="inner">
+                    <?php
+                    // fungsi query untuk menampilkan data dari tabel obat
+                    $query = mysqli_query($mysqli, "SELECT COUNT(kode_bhp) as jumlah FROM is_bhp")
+                        or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
+
+                    // tampilkan data
+                    $data = mysqli_fetch_assoc($query);
+                    ?>
+                    <h3><?php echo $data['jumlah']; ?></h3>
+                    <p>Jumlah BHP</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-medkit"></i>
+                </div>
+                <?php
+                if ($_SESSION['hak_akses'] != 'Manajer') { ?>
+                <a href="?module=form_obat&form=add" class="small-box-footer" title="Tambah Data"
+                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                <?php
+                } else { ?>
+                <a class="small-box-footer"><i class="fa"></i></a>
+                <?php
+                }
+                ?>
+            </div>
+        </div><!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div style="background-color:#00a65a;color:#fff" class="small-box">
+                <div class="inner">
+                    <?php
+                    // fungsi query untuk menampilkan data dari tabel obat masuk
+                    $query = mysqli_query($mysqli, "SELECT sum(jumlah_masuk) as jumlah FROM is_bhp_masuk")
+                        or die('Ada kesalahan pada query tampil Data obat Masuk: ' . mysqli_error($mysqli));
+
+                    // tampilkan data
+                    $data = mysqli_fetch_assoc($query);
+                    ?>
+                    <h3><?php echo $data['jumlah']; ?></h3>
+                    <p>Stok BHP Masuk</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-sign-in"></i>
+                </div>
+                <?php
+                if ($_SESSION['hak_akses'] != 'Manajer') { ?>
+                <a href="?module=form_obat_masuk&form=add" class="small-box-footer" title="Tambah Data"
+                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                <?php
+                } else { ?>
+                <a class="small-box-footer"><i class="fa"></i></a>
+                <?php
+                }
+                ?>
+            </div>
+        </div><!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div style="background-color:#dd4b39;color:#fff" class="small-box">
+                <div class="inner">
+                    <?php
+                    // fungsi query untuk menampilkan data dari tabel obat
+                    $query = mysqli_query($mysqli, "SELECT sum(jumlah_keluar) as jumlah FROM is_bhp_keluar")
+                        or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
+
+                    // tampilkan data
+                    $data = mysqli_fetch_assoc($query);
+
+                    //tambahan perubahan 
+                    ?>
+                    <h3><?php echo $data['jumlah']; ?></h3>
+                    <p>Stok BHP Keluar</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-sign-out"></i>
+                </div>
+                <?php
+                if ($_SESSION['hak_akses'] != 'Manajer') { ?>
+                <a href="?module=form_obat_keluar&form=add" class="small-box-footer" title="Tambah Data"
+                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                <?php
+                } else { ?>
+                <a class="small-box-footer"><i class="fa"></i></a>
+                <?php
+                }
+                ?>
+            </div>
+        </div><!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div style="background-color:#f39c12;color:#fff" class="small-box">
+                <div class="inner">
+                    <?php
+                    // fungsi query untuk menampilkan data dari tabel obat
+                    $query1 = mysqli_query($mysqli, "SELECT sum(jumlah_masuk) as jumlah FROM is_bhp_masuk")
+                        or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
+
+                    $query2 = mysqli_query($mysqli, "SELECT sum(jumlah_keluar) as jumlah FROM is_bhp_keluar")
+                        or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
+
+                    // tampilkan data
+                    $data1 = mysqli_fetch_assoc($query1);
+                    $data2 = mysqli_fetch_assoc($query2);
+
+                    //tambahan perubahan 
+                    ?>
+                    <h3><?php echo $data1['jumlah'] - $data2['jumlah'] ?></h3>
+                    <p>Jumlah Akhir Stok BHP</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-folder"></i>
+                </div>
+                <?php
+                if ($_SESSION['hak_akses'] != 'Manajer') { ?>
+                <a href="?module=form_obat_keluar&form=add" class="small-box-footer" title="Tambah Data"
+                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                <?php
+                } else { ?>
+                <a class="small-box-footer"><i class="fa"></i></a>
+                <?php
+                }
+                ?>
+            </div>
+        </div><!-- ./col -->
+
         <!-- <div class="col-lg-3 col-xs-6">
             <div style="background-color:#f39c12;color:#fff" class="small-box">
                 <div class="inner">

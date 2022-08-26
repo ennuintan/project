@@ -2,7 +2,7 @@
 // deklarasi parameter koneksi database
 $server   = "localhost";
 $username = "root"; // disesuaikan dengan username phpmyadmin masing-masing
-$password = "";
+$password = "admin";
 $database = "persediaan_obat";
 
 // koneksi database

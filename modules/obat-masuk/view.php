@@ -32,6 +32,24 @@
               Data Obat Masuk berhasil disimpan.
             </div>";
             }
+            // jika alert = 2
+            // tampilkan pesan Sukses "Data obat berhasil diubah"
+            elseif ($_GET['alert'] == 2) {
+                echo "<div class='alert alert-success alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+              <h4>  <i class='icon fa fa-check-circle'></i> Sukses!</h4>
+              Data obat masuk berhasil diubah.
+            </div>";
+            }
+            // jika alert = 3
+            // tampilkan pesan Sukses "Data obat berhasil dihapus"
+            elseif ($_GET['alert'] == 3) {
+                echo "<div class='alert alert-success alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+              <h4>  <i class='icon fa fa-check-circle'></i> Sukses!</h4>
+              Data obat masuk berhasil dihapus.
+            </div>";
+            }
             ?>
 
             <div class="box box-primary">
@@ -44,11 +62,12 @@
                                 <th class="center">No.</th>
                                 <th class="center">Tanggal Exp</th>
                                 <th class="center">Tanggal Masuk</th>
-                                <th class="center">Kode Obat</th>
-                                <th class="center">Nama Obat</th>
+                                <th class="center">Kode</th>
+                                <th class="center">Nama</th>
                                 <th class="center">Jumlah Masuk</th>
                                 <th class="center">Satuan</th>
                                 <th class="center">User</th>
+                                <th class="center">Status</th>
                                 <th class="center">Action</th>
                             </tr>
                         </thead>
@@ -57,9 +76,9 @@
                             <?php
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel obat
-                            $query = mysqli_query($mysqli, "SELECT a.kode_transaksi,a.tanggal_masuk,a.kode_obat,a.jumlah_masuk,b.kode_obat,b.nama_obat,b.satuan,c.nama_user
+                            $query = mysqli_query($mysqli, "SELECT a.id, a.tanggal_exp, a.tanggal_masuk,a.kode_obat,a.jumlah_masuk,b.kode_obat,b.nama_obat,b.satuan,c.nama_user
                                             FROM is_obat_masuk as a JOIN is_obat as b ON a.kode_obat=b.kode_obat
-                                            JOIN is_users as c ON c.id_user = a.created_user ORDER BY kode_transaksi DESC")
+                                            JOIN is_users as c ON c.id_user = a.created_user ORDER BY id DESC")
                                 or die('Ada kesalahan pada query tampil Data Obat Masuk: ' . mysqli_error($mysqli));
 
                             // tampilkan data
@@ -68,16 +87,23 @@
                                 $exp             = explode('-', $tanggal);
                                 $tanggal_masuk   = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
 
+                                $tanggal         = $data['tanggal_exp'];
+                                $exp             = explode('-', $tanggal);
+                                $tanggal_exp   = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
+
                                 // menampilkan isi tabel dari database ke tabel di aplikasi
                                 echo "<tr>
                       <td width='30' class='center'>$no</td>
-                      <td width='100' class='center'>$data[kode_transaksi]</td>
+                      <td width='100' class='center'>$tanggal_exp</td>
                       <td width='80' class='center'>$tanggal_masuk</td>
                       <td width='80' class='center'>$data[kode_obat]</td>
                       <td width='200'>$data[nama_obat]</td>
                       <td width='100' align='center'>$data[jumlah_masuk]</td>
                       <td width='80' class='center'>$data[satuan]</td>
                       <td width='80' class='center'>$data[nama_user]</td>
+                        <td width='80' class='center'>
+
+                        </td>
                       <td class='center' width='80'>
                         <div>
                           <a data-toggle='tooltip' data-placement='top' title='Ubah' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_obat&form=edit&id=$data[kode_obat]'>
@@ -85,7 +111,7 @@
                           </a>";
                             ?>
                             <a data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger btn-sm"
-                                href="modules/obat/proses.php?act=delete&id=<?php echo $data['kode_obat']; ?>"
+                                href="modules/obat-masuk/proses.php?act=delete&id=<?php echo $data['id']; ?>"
                                 onclick="return confirm('Anda yakin ingin menghapus obat <?php echo $data['nama_obat']; ?> ?');">
                                 <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
                             </a>

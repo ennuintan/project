@@ -14,21 +14,23 @@ else {
     if ($_GET['act'] == 'insert') {
         if (isset($_POST['simpan'])) {
             // ambil data hasil submit dari form
-            $kode_transaksi = mysqli_real_escape_string($mysqli, trim($_POST['kode_transaksi']));
+            $tanggal1        = mysqli_real_escape_string($mysqli, trim($_POST['tanggal_exp']));
+            $exp1             = explode('-', $tanggal1);
+            $tanggal_exp   = $exp1[2] . "-" . $exp1[1] . "-" . $exp1[0];
 
-            $tanggal         = mysqli_real_escape_string($mysqli, trim($_POST['tanggal_keluar']));
-            $exp             = explode('-', $tanggal);
-            $tanggal_keluar  = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
+            $tanggal2         = mysqli_real_escape_string($mysqli, trim($_POST['tanggal_keluar']));
+            $exp2             = explode('-', $tanggal2);
+            $tanggal_keluar   = $exp2[2] . "-" . $exp2[1] . "-" . $exp2[0];
 
             $kode_obat       = mysqli_real_escape_string($mysqli, trim($_POST['kode_obat']));
-            $jumlah_keluar   = mysqli_real_escape_string($mysqli, trim($_POST['jumlah_keluar']));
+            $jumlah_keluar    = mysqli_real_escape_string($mysqli, trim($_POST['jumlah_keluar']));
             $total_stok      = mysqli_real_escape_string($mysqli, trim($_POST['total_stok']));
 
             $created_user    = $_SESSION['id_user'];
 
             // perintah query untuk menyimpan data ke tabel obat keluar
-            $query = mysqli_query($mysqli, "INSERT INTO is_obat_keluar(kode_transaksi,tanggal_keluar,kode_obat,jumlah_keluar,created_user) 
-                                            VALUES('$kode_transaksi','$tanggal_keluar','$kode_obat','$jumlah_keluar','$created_user')")
+            $query = mysqli_query($mysqli, "INSERT INTO is_obat_keluar(tanggal_exp,tanggal_keluar,kode_obat,jumlah_keluar,created_user) 
+                                            VALUES('$tanggal_exp','$tanggal_keluar','$kode_obat','$jumlah_keluar','$created_user')")
                 or die('Ada kesalahan pada query insert : ' . mysqli_error($mysqli));
 
             // cek query
@@ -87,4 +89,3 @@ else {
         }
     }
 }
-?>

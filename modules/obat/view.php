@@ -60,9 +60,9 @@
                         <thead>
                             <tr>
                                 <th class="center">No.</th>
-                                <th class="center">Kode Obat</th>
-                                <th class="center">Nama Obat</th>
-                                <th class="center">Golongan Obat</th>
+                                <th class="center">Kode</th>
+                                <th class="center">Nama</th>
+                                <th class="center">Golongan</th>
                                 <th class="center">Stok</th>
                                 <th class="center">Satuan</th>
                                 <th class="center">Action</th>

@@ -5,7 +5,7 @@
 
         <a class="btn btn-primary btn-social pull-right" href="?module=form_obat_keluar&form=add" title="Tambah Data"
             data-toggle="tooltip">
-            <i class="fa fa-plus"></i> Tambah
+            <i class="fa fa-plus"></i> Keluar
         </a>
     </h1>
 
@@ -57,9 +57,9 @@
                             <?php
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel obat
-                            $query = mysqli_query($mysqli, "SELECT a.kode_transaksi,a.tanggal_keluar,a.kode_obat,a.jumlah_keluar,b.kode_obat,b.nama_obat,b.satuan, c.nama_user
+                            $query = mysqli_query($mysqli, "SELECT a.id, a.tanggal_exp, a.tanggal_keluar,a.kode_obat,a.jumlah_keluar,b.kode_obat,b.nama_obat,b.satuan, c.nama_user
                                             FROM is_obat_keluar as a JOIN is_obat as b ON a.kode_obat=b.kode_obat
-                                            JOIN is_users as c ON c.id_user = a.created_user ORDER BY kode_transaksi DESC")
+                                            JOIN is_users as c ON c.id_user = a.created_user ORDER BY id DESC")
                                 or die('Ada kesalahan pada query tampil Data Obat Keluar: ' . mysqli_error($mysqli));
 
                             // tampilkan data
@@ -68,10 +68,14 @@
                                 $exp             = explode('-', $tanggal);
                                 $tanggal_keluar   = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
 
+                                $tanggal         = $data['tanggal_exp'];
+                                $exp             = explode('-', $tanggal);
+                                $tanggal_exp   = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
+
                                 // menampilkan isi tabel dari database ke tabel di aplikasi
                                 echo "<tr>
                       <td width='30' class='center'>$no</td>
-                      <td width='100' class='center'>$data[kode_transaksi]</td>
+                      <td width='100' class='center'>$tanggal_exp</td>
                       <td width='80' class='center'>$tanggal_keluar</td>
                       <td width='80' class='center'>$data[kode_obat]</td>
                       <td width='200'>$data[nama_obat]</td>

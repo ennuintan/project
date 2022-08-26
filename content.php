@@ -22,9 +22,19 @@ else {
 		include "modules/obat/view.php";
 	}
 
+	// jika halaman konten yang dipilih bhp, panggil file view bhp
+	elseif ($_GET['module'] == 'bhp') {
+		include "modules/bhp/view.php";
+	}
+
 	// jika halaman konten yang dipilih form obat, panggil file form obat
 	elseif ($_GET['module'] == 'form_obat') {
 		include "modules/obat/form.php";
+	}
+
+	// jika halaman konten yang dipilih form bhp, panggil file form bhp
+	elseif ($_GET['module'] == 'form_bhp') {
+		include "modules/bhp/form.php";
 	}
 	// -----------------------------------------------------------------------------
 
@@ -37,6 +47,16 @@ else {
 	elseif ($_GET['module'] == 'form_obat_masuk') {
 		include "modules/obat-masuk/form.php";
 	}
+
+	// jika halaman konten yang dipilih bhp masuk, panggil file view bhp masuk
+	elseif ($_GET['module'] == 'bhp_masuk') {
+		include "modules/bhp-masuk/view.php";
+	}
+
+	// jika halaman konten yang dipilih form bhp masuk, panggil file form bhp masuk
+	elseif ($_GET['module'] == 'form_bhp_masuk') {
+		include "modules/bhp-masuk/form.php";
+	}
 	// -----------------------------------------------------------------------------
 
 	// jika halaman konten yang dipilih obat keluar, panggil file view obat masuk
@@ -48,6 +68,16 @@ else {
 	elseif ($_GET['module'] == 'form_obat_keluar') {
 		include "modules/obat-keluar/form.php";
 	}
+
+	// jika halaman konten yang dipilih bhp keluar, panggil file view bhp masuk
+	elseif ($_GET['module'] == 'bhp_keluar') {
+		include "modules/bhp-keluar/view.php";
+	}
+
+	// jika halaman konten yang dipilih form bhp keluar, panggil file form bhp keluar
+	elseif ($_GET['module'] == 'form_bhp_keluar') {
+		include "modules/bhp-keluar/form.php";
+	}
 	// -----------------------------------------------------------------------------
 
 	// jika halaman konten yang dipilih laporan stok, panggil file view laporan stok
@@ -57,15 +87,20 @@ else {
 	// -----------------------------------------------------------------------------
 
 	// jika halaman konten yang dipilih laporan obat masuk, panggil file view laporan obat masuk
-	elseif ($_GET['module'] == 'lap_obat_masuk') {
-		include "modules/lap-obat-masuk/view.php";
+	elseif ($_GET['module'] == 'lap_obat_masuk_dan_keluar') {
+		include "modules/lap-obat-masuk-dan-keluar/view.php";
+	}
+
+	// jika halaman konten yang dipilih laporan bhp masuk, panggil file view laporan bhp masuk
+	elseif ($_GET['module'] == 'lap_bhp_masuk_dan_keluar') {
+		include "modules/lap-bhp-masuk-dan-keluar/view.php";
 	}
 	// -----------------------------------------------------------------------------
 
 	// jika halaman konten yang dipilih laporan obat keluar, panggil file view laporan obat keluar
-	elseif ($_GET['module'] == 'lap_obat_keluar') {
-		include "modules/lap-obat-keluar/view.php";
-	}
+	// elseif ($_GET['module'] == 'lap_obat_keluar') {
+	// 	include "modules/lap-obat-keluar/view.php";
+	// }
 	// -----------------------------------------------------------------------------
 
 	// jika halaman konten yang dipilih user, panggil file view user
