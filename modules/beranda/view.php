@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div style="background-color:#008b8b;color:#fff" class="small-box">
+            <div style="background-color:#2E8B57;color:#fff" class="small-box">
                 <div class="inner">
                     <?php
                     // fungsi query untuk menampilkan data dari tabel obat
@@ -41,12 +41,12 @@
                     <p>Jumlah Nama Obat</p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-plus"></i>
+                    <i class="fa fa-medkit"></i>
                 </div>
                 <?php
                 if ($_SESSION['hak_akses'] != 'Manajer') { ?>
                 <a href="?module=form_obat&form=add" class="small-box-footer" title="Tambah Data"
-                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                    data-toggle="tooltip"><i class="fa fa-medkit"></i></a>
                 <?php
                 } else { ?>
                 <a class="small-box-footer"><i class="fa"></i></a>
@@ -58,7 +58,7 @@
 
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div style="background-color:#00a65a;color:#fff" class="small-box">
+            <div style="background-color:#6B8E23;color:#fff" class="small-box">
                 <div class="inner">
                     <?php
                     // fungsi query untuk menampilkan data dari tabel obat masuk
@@ -77,7 +77,7 @@
                 <?php
                 if ($_SESSION['hak_akses'] != 'Manajer') { ?>
                 <a href="?module=form_obat_masuk&form=add" class="small-box-footer" title="Tambah Data"
-                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                    data-toggle="tooltip"><i class="fa fa-sign-in"></i></a>
                 <?php
                 } else { ?>
                 <a class="small-box-footer"><i class="fa"></i></a>
@@ -89,7 +89,7 @@
 
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div style="background-color:#dd4b39;color:#fff" class="small-box">
+            <div style="background-color:#FFA500;color:#fff" class="small-box">
                 <div class="inner">
                     <?php
                     // fungsi query untuk menampilkan data dari tabel obat
@@ -110,7 +110,7 @@
                 <?php
                 if ($_SESSION['hak_akses'] != 'Manajer') { ?>
                 <a href="?module=form_obat_keluar&form=add" class="small-box-footer" title="Tambah Data"
-                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                    data-toggle="tooltip"><i class="fa fa-sign-out"></i></a>
                 <?php
                 } else { ?>
                 <a class="small-box-footer"><i class="fa"></i></a>
@@ -122,7 +122,7 @@
 
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div style="background-color:#f39c12;color:#fff" class="small-box">
+            <div style="background-color:#808000;color:#fff" class="small-box">
                 <div class="inner">
                     <?php
                     // fungsi query untuk menampilkan data dari tabel obat
@@ -140,14 +140,15 @@
                     ?>
                     <h3><?php echo $data1['jumlah'] - $data2['jumlah'] ?></h3>
                     <p>Jumlah Akhir Stok Obat</p>
+
                 </div>
                 <div class="icon">
                     <i class="fa fa-folder"></i>
                 </div>
                 <?php
                 if ($_SESSION['hak_akses'] != 'Manajer') { ?>
-                <a href="?module=form_obat_keluar&form=add" class="small-box-footer" title="Tambah Data"
-                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                <a href="?module=form_obat&form=add" class="small-box-footer" title="Tambah Data"
+                    data-toggle="tooltip"><i class="fa fa-folder"></i></a>
                 <?php
                 } else { ?>
                 <a class="small-box-footer"><i class="fa"></i></a>
@@ -163,9 +164,9 @@
             <div style="background-color:#008b8b;color:#fff" class="small-box">
                 <div class="inner">
                     <?php
-                    // fungsi query untuk menampilkan data dari tabel obat
+                    // fungsi query untuk menampilkan data dari tabel BHP
                     $query = mysqli_query($mysqli, "SELECT COUNT(kode_bhp) as jumlah FROM is_bhp")
-                        or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
+                        or die('Ada kesalahan pada query tampil Data BHP: ' . mysqli_error($mysqli));
 
                     // tampilkan data
                     $data = mysqli_fetch_assoc($query);
@@ -178,8 +179,8 @@
                 </div>
                 <?php
                 if ($_SESSION['hak_akses'] != 'Manajer') { ?>
-                <a href="?module=form_obat&form=add" class="small-box-footer" title="Tambah Data"
-                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                <a href="?module=form_bhp&form=add" class="small-box-footer" title="Tambah Data"
+                    data-toggle="tooltip"><i class="fa fa-medkit"></i></a>
                 <?php
                 } else { ?>
                 <a class="small-box-footer"><i class="fa"></i></a>
@@ -191,12 +192,12 @@
 
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div style="background-color:#00a65a;color:#fff" class="small-box">
+            <div style="background-color:#FF4500;color:#fff" class="small-box">
                 <div class="inner">
                     <?php
-                    // fungsi query untuk menampilkan data dari tabel obat masuk
+                    // fungsi query untuk menampilkan data dari tabel BHP masuk
                     $query = mysqli_query($mysqli, "SELECT sum(jumlah_masuk) as jumlah FROM is_bhp_masuk")
-                        or die('Ada kesalahan pada query tampil Data obat Masuk: ' . mysqli_error($mysqli));
+                        or die('Ada kesalahan pada query tampil Data BHP Masuk: ' . mysqli_error($mysqli));
 
                     // tampilkan data
                     $data = mysqli_fetch_assoc($query);
@@ -209,8 +210,8 @@
                 </div>
                 <?php
                 if ($_SESSION['hak_akses'] != 'Manajer') { ?>
-                <a href="?module=form_obat_masuk&form=add" class="small-box-footer" title="Tambah Data"
-                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                <a href="?module=form_bhp_masuk&form=add" class="small-box-footer" title="Tambah Data"
+                    data-toggle="tooltip"><i class="fa fa-sign-in"></i></a>
                 <?php
                 } else { ?>
                 <a class="small-box-footer"><i class="fa"></i></a>
@@ -222,10 +223,10 @@
 
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div style="background-color:#dd4b39;color:#fff" class="small-box">
+            <div style="background-color:#D2691E;color:#fff" class="small-box">
                 <div class="inner">
                     <?php
-                    // fungsi query untuk menampilkan data dari tabel obat
+                    // fungsi query untuk menampilkan data dari tabel BHP
                     $query = mysqli_query($mysqli, "SELECT sum(jumlah_keluar) as jumlah FROM is_bhp_keluar")
                         or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
 
@@ -242,8 +243,8 @@
                 </div>
                 <?php
                 if ($_SESSION['hak_akses'] != 'Manajer') { ?>
-                <a href="?module=form_obat_keluar&form=add" class="small-box-footer" title="Tambah Data"
-                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                <a href="?module=form_bhp_keluar&form=add" class="small-box-footer" title="Tambah Data"
+                    data-toggle="tooltip"><i class="fa fa-sign-out"></i></a>
                 <?php
                 } else { ?>
                 <a class="small-box-footer"><i class="fa"></i></a>
@@ -255,7 +256,7 @@
 
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div style="background-color:#f39c12;color:#fff" class="small-box">
+            <div style="background-color:#8B0000;color:#fff" class="small-box">
                 <div class="inner">
                     <?php
                     // fungsi query untuk menampilkan data dari tabel obat
@@ -279,8 +280,8 @@
                 </div>
                 <?php
                 if ($_SESSION['hak_akses'] != 'Manajer') { ?>
-                <a href="?module=form_obat_keluar&form=add" class="small-box-footer" title="Tambah Data"
-                    data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                <a href="?module=form_bhp&form=add" class="small-box-footer" title="Tambah Data"
+                    data-toggle="tooltip"><i class="fa fa-folder"></i></a>
                 <?php
                 } else { ?>
                 <a class="small-box-footer"><i class="fa"></i></a>

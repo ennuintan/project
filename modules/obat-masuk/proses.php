@@ -74,9 +74,8 @@ else {
             }
         }
     } elseif ($_GET['act'] == 'delete') {
-        if (isset($_POST['simpan'])) {
-            if (isset($_POST['kode_obat'])) {
-                $id = $data['id'];
+        if (isset($_GET['id'])) {
+                $kode_obat = $_GET['id'];
 
                 // perintah query untuk mengubah data pada tabel obat
                 $query = mysqli_query($mysqli, "DELETE FROM is_obat_masuk WHERE id='$id'")
@@ -90,4 +89,3 @@ else {
             }
         }
     }
-}

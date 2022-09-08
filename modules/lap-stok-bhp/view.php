@@ -1,12 +1,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-file-text-o icon-title"></i> Laporan Data BHP Masuk dan Keluar
+        <i class="fa fa-file-text-o icon-title"></i> Laporan Stok BHP
     </h1>
     <ol class="breadcrumb">
         <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda</a></li>
         <li class="active">Laporan</li>
-        <li class="active">Data BHP Masuk dan Keluar</li>
+        <li class="active">Stok BHP</li>
     </ol>
 </section>
 
@@ -14,8 +14,6 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-
-            <!-- Form Laporan -->
             <div class="box box-primary">
                 <div class="box-body">
                     <!-- tampilan tabel bhp -->
@@ -26,16 +24,8 @@
                                 <th>No.</th>
                                 <th>Kode BHP</th>
                                 <th>Nama BHP</th>
-                                <th>Golongan</th>
+                                <th>Stok</th>
                                 <th>Satuan</th>
-                                <th>Jumlah Masuk</th>
-                                <th>Jumlah Keluar</th>
-                                <th>Sisa Stok</th>
-                                <th>Tanggal Exp</th>
-                                <th>Tanggal Masuk</th>
-                                <th>Tanggal Keluar</th>
-                                <th>User Input</th>
-                                <th>User Output</th>
                             </tr>
                         </thead>
                         <!-- tampilan tabel body -->
@@ -43,7 +33,7 @@
                             <?php
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel bhp
-                            $query = mysqli_query($mysqli, "SELECT is_bhp.kode_bhp, is_bhp.nama_bhp, is_bhp.golongan_bhp, is_bhp.satuan, is_bhp_masuk.jumlah_masuk, is_bhp_keluar.jumlah_keluar, is_bhp.stok, is_bhp_masuk.tanggal_exp, is_bhp_masuk.tanggal_masuk, is_bhp_keluar.tanggal_keluar, is_bhp_masuk.created_user, is_bhp_keluar.created_user FROM is_bhp JOIN is_bhp_masuk ON is_bhp.kode_bhp = is_bhp_masuk.kode_bhp JOIN is_bhp_keluar ON is_bhp.kode_bhp = is_bhp_keluar.kode_bhp")
+                            $query = mysqli_query($mysqli, "SELECT kode_bhp,nama_bhp,satuan,stok FROM is_bhp ORDER BY nama_bhp ASC")
                                 or die('Ada kesalahan pada query tampil Data bhp: ' . mysqli_error($mysqli));
                             // tampilkan data
                             while ($data = mysqli_fetch_assoc($query)) {
@@ -54,16 +44,8 @@
                       <td>$no</td>
                       <td>$data[kode_bhp]</td>
                       <td>$data[nama_bhp]</td>
-                      <td>$data[golongan_bhp]</td>
-                      <td>$data[satuan]</td>
-                      <td>$data[jumlah_masuk]</td>
-                      <td>$data[jumlah_keluar]</td>
                       <td>$data[stok]</td>
-                      <td>$data[tanggal_exp]</td>
-                      <td>$data[tanggal_masuk]</td>
-                      <td>$data[tanggal_keluar]</td>
-                      <td>$data[created_user]</td>
-                      <td>$data[created_user]</td>
+                      <td>$data[satuan]</td>
                     </tr>";
                                 $no++;
                             }
@@ -75,4 +57,29 @@
         </div>
         <!--/.col -->
     </div> <!-- /.row -->
-</section><!-- /.content -->
+</section>
+
+<!-- DataTables -->
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" /> -->
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" /> -->
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#example1').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+});
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>

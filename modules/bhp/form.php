@@ -86,9 +86,12 @@
                                      <option value="Botol">Botol</option>
                                      <option value="Box">Box</option>
                                      <option value="Kotak">Kotak</option>
-                                     <option value="Strip">Strip</option>
+                                     <option value="Strip">Strip/Kaplet</option>
                                      <option value="Tube">Tube</option>
                                      <option value="Pcs">Pcs</option>
+                                     <option value="Biji">Biji</option>
+                                     <option value="Bks">Bks</option>
+                                     <option value="Amp">Amp</option>
                                  </select>
                              </div>
                          </div>
@@ -173,7 +176,7 @@
                          </div>
 
                          <div class="form-group">
-                             <label class="col-sm-2 control-label">Stok bhp</label>
+                             <label class="col-sm-2 control-label">Stok BHP</label>
                              <div class="col-sm-5">
                                  <input type="text" class="form-control" name="stok_bhp" autocomplete="off"
                                      value="<?php echo $data['stok']; ?>" required>
@@ -187,11 +190,16 @@
                                      autocomplete="off" required>
                                      <option value="<?php echo $data['satuan']; ?>"><?php echo $data['satuan']; ?>
                                      </option>
+                                     <option value=""></option>
                                      <option value="Botol">Botol</option>
                                      <option value="Box">Box</option>
                                      <option value="Kotak">Kotak</option>
-                                     <option value="Strip">Strip</option>
+                                     <option value="Strip">Strip/Kaplet</option>
                                      <option value="Tube">Tube</option>
+                                     <option value="Pcs">Pcs</option>
+                                     <option value="Biji">Biji</option>
+                                     <option value="Bks">Bks</option>
+                                     <option value="Amp">Amp</option>
                                  </select>
                              </div>
                          </div>

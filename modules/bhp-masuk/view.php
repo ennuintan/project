@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-sign-in icon-title"></i> Data bhp Masuk
+        <i class="fa fa-sign-in icon-title"></i> Data BHP Masuk
 
         <a class="btn btn-primary btn-social pull-right" href="?module=form_bhp_masuk&form=add" title="Tambah Data"
             data-toggle="tooltip">
@@ -62,8 +62,8 @@
                                 <th class="center">No.</th>
                                 <th class="center">Tanggal Exp</th>
                                 <th class="center">Tanggal Masuk</th>
-                                <th class="center">Kode</th>
-                                <th class="center">Nama</th>
+                                <th class="center">Kode BHP</th>
+                                <th class="center">Nama BHP</th>
                                 <th class="center">Jumlah Masuk</th>
                                 <th class="center">Satuan</th>
                                 <th class="center">User</th>

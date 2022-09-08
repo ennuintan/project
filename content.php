@@ -84,6 +84,9 @@ else {
 	elseif ($_GET['module'] == 'lap_stok') {
 		include "modules/lap-stok/view.php";
 	}
+	elseif ($_GET['module'] == 'lap_stok_bhp') {
+		include "modules/lap-stok-bhp/view.php";
+	}
 	// -----------------------------------------------------------------------------
 
 	// jika halaman konten yang dipilih laporan obat masuk, panggil file view laporan obat masuk

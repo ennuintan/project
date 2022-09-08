@@ -150,7 +150,7 @@ session_start();
                 document.write(new Date().getFullYear())
                 </script>
             </strong>
-            Kantor Kesehatan Pelabuhan
+            Projectkuy
         </footer>
     </div><!-- ./wrapper -->
 

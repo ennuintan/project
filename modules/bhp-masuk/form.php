@@ -42,11 +42,11 @@ if ($_GET['form'] == 'add') { ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-edit icon-title"></i> Input Data bhp Masuk
+        <i class="fa fa-edit icon-title"></i> Input Data BHP Masuk
     </h1>
     <ol class="breadcrumb">
         <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda </a></li>
-        <li><a href="?module=bhp_masuk"> bhp Masuk </a></li>
+        <li><a href="?module=bhp_masuk"> BHP Masuk </a></li>
         <li class="active"> Tambah </li>
     </ol>
 </section>
@@ -87,7 +87,7 @@ if ($_GET['form'] == 'add') { ?>
                         <hr>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">bhp</label>
+                            <label class="col-sm-2 control-label">BHP</label>
                             <div class="col-sm-5">
                                 <select class="chosen-select" name="kode_bhp" data-placeholder="-- Pilih bhp --"
                                     onchange="tampil_bhp(this)" autocomplete="off" required>
@@ -154,11 +154,11 @@ if ($_GET['form'] == 'edit') { ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-edit icon-title"></i> Input Data bhp Masuk
+        <i class="fa fa-edit icon-title"></i> Input Data BHP Masuk
     </h1>
     <ol class="breadcrumb">
         <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda </a></li>
-        <li><a href="?module=bhp_masuk"> bhp Masuk </a></li>
+        <li><a href="?module=bhp_masuk"> BHP Masuk </a></li>
         <li class="active"> Tambah </li>
     </ol>
 </section>
@@ -199,7 +199,7 @@ if ($_GET['form'] == 'edit') { ?>
                         <hr>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">bhp</label>
+                            <label class="col-sm-2 control-label">BHP</label>
                             <div class="col-sm-5">
                                 <select class="chosen-select" name="kode_bhp" data-placeholder="-- Pilih bhp --"
                                     onchange="tampil_bhp(this)" autocomplete="off" required>

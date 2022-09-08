@@ -159,7 +159,7 @@ if ($_GET['form'] == 'edit') { ?>
     <ol class="breadcrumb">
         <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda </a></li>
         <li><a href="?module=obat_masuk"> Obat Masuk </a></li>
-        <li class="active"> Tambah </li>
+        <li class="active"> Tambah Obat</li>
     </ol>
 </section>
 

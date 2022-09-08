@@ -47,7 +47,7 @@ if ($_GET['form'] == 'add') { ?>
     <ol class="breadcrumb">
         <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda </a></li>
         <li><a href="?module=obat_keluar"> Obat Keluar </a></li>
-        <li class="active"> Tambah </li>
+        <li class="active"> Kurang</li>
     </ol>
 </section>
 
@@ -159,7 +159,7 @@ if ($_GET['form'] == 'edit') { ?>
     <ol class="breadcrumb">
         <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda </a></li>
         <li><a href="?module=obat_keluar"> Obat Keluar </a></li>
-        <li class="active"> Tambah </li>
+        <li class="active"> Kurang </li>
     </ol>
 </section>
 

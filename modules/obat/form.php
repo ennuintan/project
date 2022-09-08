@@ -94,8 +94,12 @@
                                      <option value="Box">Box</option>
                                      <option value="Kotak">Kotak</option>
                                      <option value="Strip">Strip</option>
+                                     <option value="Kaplet">Kaplet</option>
                                      <option value="Tube">Tube</option>
                                      <option value="Pcs">Pcs</option>
+                                     <option value="Biji">Biji</option>
+                                     <option value="Bks">Bks</option>
+                                     <option value="Amp">Amp</option>
                                  </select>
                              </div>
                          </div>
@@ -201,11 +205,17 @@
                                      autocomplete="off" required>
                                      <option value="<?php echo $data['satuan']; ?>"><?php echo $data['satuan']; ?>
                                      </option>
+                                     <option value=""></option>
                                      <option value="Botol">Botol</option>
                                      <option value="Box">Box</option>
                                      <option value="Kotak">Kotak</option>
                                      <option value="Strip">Strip</option>
+                                     <option value="Kaplet">Kaplet</option>
                                      <option value="Tube">Tube</option>
+                                     <option value="Pcs">Pcs</option>
+                                     <option value="Biji">Biji</option>
+                                     <option value="Bks">Bks</option>
+                                     <option value="Amp">Amp</option>
                                  </select>
                              </div>
                          </div>
