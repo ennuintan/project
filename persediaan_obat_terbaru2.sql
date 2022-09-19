@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 19 Sep 2022 pada 11.12
+-- Waktu pembuatan: 19 Sep 2022 pada 11.50
 -- Versi server: 5.7.33
 -- Versi PHP: 7.4.19
 
@@ -452,7 +452,7 @@ INSERT INTO `is_obat` (`kode_obat`, `nama_obat`, `golongan_obat`, `satuan`, `sto
 ('B000358', 'Dexametasone 5 mg', 'Obat Keras', 'Amp', 18, 1, '2022-09-08 06:47:59', 1, '2022-09-08 06:47:59'),
 ('B000359', 'Aminophylline 24 mg', 'Obat Keras', 'Amp', 1, 1, '2022-09-08 06:48:46', 1, '2022-09-13 17:06:35'),
 ('B000360', 'Actived', 'Obat Herbal', 'Kaplet', 75, 1, '2022-09-19 02:13:45', 1, '2022-09-19 10:43:05'),
-('B000361', 'ABC', 'Obat Herbal', 'Strip', NULL, 1, '2022-09-19 11:11:35', 1, '2022-09-19 11:11:35');
+('B000361', 'ABCD', 'Obat Herbal', 'Strip', 15, 1, '2022-09-19 11:47:01', 1, '2022-09-19 11:49:49');
 
 -- --------------------------------------------------------
 
@@ -476,7 +476,7 @@ CREATE TABLE `is_obat_keluar` (
 --
 
 INSERT INTO `is_obat_keluar` (`id`, `id_obat_masuk`, `tanggal_exp`, `tanggal_keluar`, `kode_obat`, `jumlah_keluar`, `created_user`, `created_date`) VALUES
-(3, 47, '2022-12-31', '2022-09-19', 'B000360', 25, 1, '2022-09-19 10:43:05');
+(4, 54, '2023-12-31', '2022-09-19', 'B000361', 5, 1, '2022-09-19 11:49:49');
 
 -- --------------------------------------------------------
 
@@ -499,8 +499,8 @@ CREATE TABLE `is_obat_masuk` (
 --
 
 INSERT INTO `is_obat_masuk` (`id`, `tanggal_exp`, `tanggal_masuk`, `kode_obat`, `jumlah_masuk`, `created_user`, `created_date`) VALUES
-(46, '2023-12-31', '2022-09-19', 'B000360', 50, 1, '2022-09-19 10:34:02'),
-(47, '2022-12-31', '2022-09-19', 'B000360', 50, 1, '2022-09-19 10:34:11');
+(53, '2022-12-31', '2022-09-19', 'B000361', 10, 1, '2022-09-19 11:47:22'),
+(54, '2023-12-31', '2022-09-19', 'B000361', 10, 1, '2022-09-19 11:49:09');
 
 -- --------------------------------------------------------
 
@@ -610,13 +610,13 @@ ALTER TABLE `is_bhp_masuk`
 -- AUTO_INCREMENT untuk tabel `is_obat_keluar`
 --
 ALTER TABLE `is_obat_keluar`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_obat_masuk`
 --
 ALTER TABLE `is_obat_masuk`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_users`

@@ -16,6 +16,7 @@ if (isset($_POST['dataidobat'])) {
 
   $stok   = $data['stok'];
   $satuan = $data['satuan'];
+  $stoknull = 0;
 
   if ($stok != '') {
     echo "<div class='form-group'>
@@ -24,6 +25,16 @@ if (isset($_POST['dataidobat'])) {
                   <div class='input-group'>
                     <input type='text' class='form-control' id='stok' name='stok' value='$stok' readonly>
                     <span class='input-group-addon'>$satuan</span>
+                  </div>
+                </div>
+              </div>";
+  } elseif ($stok == null) {
+    echo "<div class='form-group'>
+                <label class='col-sm-2 control-label'>Stok</label>
+                <div class='col-sm-5'>
+                  <div class='input-group'>
+                    <input type='text' class='form-control' id='stok' name='stok' value='$stoknull' readonly>
+                    <span class='input-group-addon'>$stoknull</span>
                   </div>
                 </div>
               </div>";
