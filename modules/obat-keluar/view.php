@@ -29,7 +29,25 @@
                 echo "<div class='alert alert-success alert-dismissable'>
               <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
               <h4>  <i class='icon fa fa-check-circle'></i> Sukses!</h4>
-              Data Obat Keluar berhasil disimpan.
+              Data Obat keluar berhasil disimpan.
+            </div>";
+            }
+            // jika alert = 2
+            // tampilkan pesan Sukses "Data obat keluar berhasil diubah"
+            elseif ($_GET['alert'] == 2) {
+                echo "<div class='alert alert-success alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+              <h4>  <i class='icon fa fa-check-circle'></i> Sukses!</h4>
+              Data Obat keluar berhasil diubah.
+            </div>";
+            }
+            // jika alert = 3
+            // tampilkan pesan Sukses "Data Obat keluar berhasil dihapus"
+            elseif ($_GET['alert'] == 3) {
+                echo "<div class='alert alert-success alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+              <h4>  <i class='icon fa fa-check-circle'></i> Sukses!</h4>
+              Data Obat keluar berhasil dihapus.
             </div>";
             }
             ?>
@@ -89,7 +107,7 @@
                           </a>";
                             ?>
                             <a data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger btn-sm"
-                                href="modules/obat/proses.php?act=delete&id=<?php echo $data['id']; ?>"
+                                href="modules/obat-keluar/proses.php?act=delete&id=<?php echo $data['id']; ?>"
                                 onclick="return confirm('Anda yakin ingin menghapus obat <?php echo $data['nama_obat']; ?> ?');">
                                 <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
                             </a>

@@ -1,9 +1,17 @@
 <?php
 // deklarasi parameter koneksi database
+// Database Putra
 $server   = "localhost";
-$username = "root"; // disesuaikan dengan username phpmyadmin masing-masing
+$username = "root";
 $password = "admin";
 $database = "persediaan_obat";
+
+// Database Ennuy
+// $server   = "localhost";
+// $username = "root"; 
+// $password = "";
+// $database = "persediaan_obat_TERBARU";
+
 
 // koneksi database
 $mysqli = new mysqli($server, $username, $password, $database);

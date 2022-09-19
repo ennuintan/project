@@ -1,4 +1,5 @@
 <script type="text/javascript">
+//tampilan seluruh obat
 function tampil_obat(input) {
     var num = input.value;
 
@@ -152,7 +153,7 @@ if ($_GET['form'] == 'add') { ?>
 elseif ($_GET['form'] == 'edit') {
     if (isset($_GET['id'])) {
         // fungsi query untuk menampilkan data dari tabel obat masuk
-        $query = mysqli_query($mysqli, "SELECT a.kode_obat, a.nama_obat, b.tanggal_exp,b.tanggal_masuk,b.kode_obat,b.jumlah_masuk FROM is_obat as a join is_obat_masuk as b on a.kode_obat = b.kode_obat WHERE id='$_GET[id]'")
+        $query = mysqli_query($mysqli, "SELECT a.kode_obat, b.id, a.nama_obat, b.tanggal_exp,b.tanggal_masuk,b.kode_obat,b.jumlah_masuk FROM is_obat as a join is_obat_masuk as b on a.kode_obat = b.kode_obat WHERE id='$_GET[id]'")
             or die('Ada kesalahan pada query tampil Data obat masuk : ' . mysqli_error($mysqli));
         $data  = mysqli_fetch_assoc($query);
     }
@@ -176,7 +177,7 @@ elseif ($_GET['form'] == 'edit') {
             <div class="box box-primary">
                 <!-- form start -->
                 <form role="form" class="form-horizontal" action="modules/obat-masuk/proses.php?act=update"
-                    method="POST">
+                    method="POST" name="formObatMasuk">
                     <div class="box-body">
 
                         <div class="form-group">
@@ -217,13 +218,31 @@ elseif ($_GET['form'] == 'edit') {
                             </div>
                         </div>
 
+                        <span id='stok'>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Stok</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" id="stokobat" name="stok" readonly required>
+                                </div>
+                            </div>
+                        </span>
+
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Jumlah Masuk</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="jumlah_masuk" name="jumlah_masuk"
+                                <input type="text" class="form-control" id="jumlah_masukobat" name="jumlah_masuk"
                                     autocomplete="off" onKeyPress="return goodchars(event,'0123456789',this)"
                                     onkeyup="hitung_total_stok(this)&cek_jumlah_masuk(this)"
                                     value="<?php echo $data['jumlah_masuk']; ?>" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Total Stok</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="total_stok" name="total_stok" readonly
+                                    required>
                             </div>
                         </div>
                     </div><!-- /.box body -->

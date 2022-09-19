@@ -13,9 +13,14 @@ function tampil_obat(input) {
 
 function cek_jumlah_keluar(input) {
     jml = document.formObatKeluar.jumlah_keluar.value;
+    bil1 = document.formObatKeluar.stok.value;
     var jumlah = eval(jml);
     if (jumlah < 1) {
         alert('Jumlah Keluar Tidak Boleh Nol !!');
+        input.value = input.value.substring(0, input.value.length - 1);
+    }
+    if (jumlah > bil1) {
+        alert('Jumlah Keluar Tidak Boleh Melebihi Stok !!');
         input.value = input.value.substring(0, input.value.length - 1);
     }
 }
@@ -42,13 +47,15 @@ if ($_GET['form'] == 'add') { ?>
 <!-- Content Header (Page header) -->
 <?php
     if (isset($_GET['id'])) {
+
         // fungsi query untuk menampilkan data dari tabel obat masuk
-        $query = mysqli_query($mysqli, "SELECT a.kode_obat, a.nama_obat, b.tanggal_exp,b.tanggal_masuk,b.kode_obat,b.jumlah_masuk FROM is_obat as a join is_obat_masuk as b on a.kode_obat = b.kode_obat WHERE id='$_GET[id]'")
+        $query = mysqli_query($mysqli, "SELECT a.kode_obat, a.nama_obat, b.tanggal_exp,b.tanggal_masuk,b.kode_obat,b.jumlah_masuk 
+        FROM is_obat as a join is_obat_masuk as b on a.kode_obat = b.kode_obat WHERE id='$_GET[id]'")
             or die('Ada kesalahan pada query tampil Data obat masuk : ' . mysqli_error($mysqli));
         $data  = mysqli_fetch_assoc($query);
-        $tanggal         = $data['tanggal_exp'];
-        $exp             = explode('-', $tanggal);
-        $tanggal_exp   = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
+        $tanggal     = $data['tanggal_exp'];
+        $exp         = explode('-', $tanggal);
+        $tanggal_exp = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
     }
     // fungsi untuk membuat kode transaksi
     $query_id = mysqli_query($mysqli, "SELECT RIGHT(id,7) as kode FROM is_obat_keluar
@@ -76,7 +83,6 @@ if ($_GET['form'] == 'add') { ?>
                 <form role="form" class="form-horizontal" action="modules/obat-keluar/proses.php?act=insert"
                     method="POST" name="formObatKeluar">
                     <div class="box-body">
-
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Tanggal Keluar</label>
@@ -114,7 +120,7 @@ if ($_GET['form'] == 'add') { ?>
                                 <label class="col-sm-2 control-label">Stok Masuk</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" id="stok" name="stok"
-                                        value="<?php echo $data['jumlah_masuk']; ?>" readonly required>
+                                        value="<?php echo $data['jumlah_masuk']; ?>" readonly>
                                 </div>
                             </div>
                         </span>
@@ -141,7 +147,10 @@ if ($_GET['form'] == 'add') { ?>
                     <div class="box-footer">
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <input type="submit" class="btn btn-primary btn-submit" name="simpan" value="Simpan">
+                                <input type="hidden" name="id" value="<?= $_GET['id'] ?>" type="submit"
+                                    class="btn btn-primary btn-submit" name="simpan" value="Simpan">
+                                <button type="submit" class="btn btn-primary btn-submit" name="simpan"
+                                    value="Simpan">simpan</button>
                                 <a href="?module=pilih_obat_keluar" class="btn btn-default btn-reset">Batal</a>
                             </div>
                         </div>

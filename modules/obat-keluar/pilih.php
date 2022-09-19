@@ -64,6 +64,7 @@
                                 <th class="center">Tanggal Masuk</th>
                                 <th class="center">Nama Obat</th>
                                 <th class="center">Banyak Obat Masuk</th>
+                                <th class="center">Banyak Obat Keluar</th>
                                 <th class="center">Satuan</th>
                                 <th class="center">Status Exp</th>
                                 <th class="center">Action</th>
@@ -74,13 +75,17 @@
                             <?php
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel obat
-                            $query = mysqli_query($mysqli, "SELECT a.id, a.tanggal_exp, a.tanggal_masuk,a.kode_obat,a.jumlah_masuk,b.kode_obat,b.nama_obat,b.satuan,c.nama_user
-                                            FROM is_obat_masuk as a JOIN is_obat as b ON a.kode_obat=b.kode_obat
-                                            JOIN is_users as c ON c.id_user = a.created_user ORDER BY id DESC")
+                            $query = mysqli_query($mysqli, "SELECT a.id, a.tanggal_exp, a.tanggal_masuk,a.kode_obat,a.jumlah_masuk,d.jumlah_keluar,b.kode_obat,b.nama_obat,b.satuan,c.nama_user
+                                            FROM is_obat_masuk as a 
+                                            JOIN is_obat as b ON a.kode_obat = b.kode_obat 
+                                            JOIN is_users as c ON c.id_user = a.created_user
+                                            LEFT JOIN is_obat_keluar as d ON a.id = d.id_obat_masuk 
+                                            ORDER BY id DESC")
                                 or die('Ada kesalahan pada query tampil Data Obat Masuk: ' . mysqli_error($mysqli));
 
                             // tampilkan data
                             while ($data = mysqli_fetch_assoc($query)) {
+                                // var_dump($data);
                                 $tanggal         = $data['tanggal_masuk'];
                                 $exp             = explode('-', $tanggal);
                                 $tanggal_masuk   = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
@@ -94,29 +99,48 @@
                                 $masaberlaku = strtotime($masaaktif) - strtotime($sekarang);
                                 $hasil = $masaberlaku / (24 * 60 * 60);
                                 // menampilkan isi tabel dari database ke tabel di aplikasi
-                                echo
-
-
-                                "<tr>
-                      <td width='30' class='center'>$no</td>
-                      <td width='100' class='center'>$tanggal_exp</td>
-                      <td width='80' class='center'>$tanggal_masuk</td>
-                      <td width='200' class='center'>$data[nama_obat]</td>
-                      <td width='80' class='center'>$data[jumlah_masuk]</td>
-                      <td width='80' class='center'>$data[satuan]</td>
-                      <td width='80' class='center'>
-                      $hasil Hari Lagi
-                      </td>                     
-                      <td class='center' width='80'>
-                        <div>
-                          <a data-toggle='tooltip' data-placement='top' title='Keluar' style='margin-right:5px' class='btn btn-danger btn-sm' href='?module=form_obat_keluar&form=add&id=$data[id]'>
-                              <i style='color:#fff' class='glyphicon glyphicon-arrow-right'></i>
-                          </a>";
                             ?>
+                            <tr>
+                                <td width='30' class='center'><?= $no ?></td>
+                                <td width='100' class='center'><?= $tanggal_exp ?></td>
+                                <td width='80' class='center'><?= $tanggal_masuk ?></td>
+                                <td width='200' class='center'><?= $data['nama_obat'] ?></td>
+                                <td width='80' class='center'><?= $data['jumlah_masuk'] ?></td>
+
+                                <?php if ($data['jumlah_keluar'] == NULL) { ?>
+                                <td width='80' class='center'> 0 </td>
+                                <?php
+                                    } else { ?>
+                                <td width='80' class='center'><?= $data['jumlah_keluar'] ?></td>
+                                <?php
+                                    }
+                                    ?>
+
+                                <td width='80' class='center'><?= $data['satuan'] ?></td>
+                                <td width='80' class='center'>
+                                    <?= $hasil ?> Hari Lagi
+                                </td>
+                                <td class='center' width='80'>
+                                    <div>
+                                        <?php
+                                            if ($data['jumlah_masuk'] == $data['jumlah_keluar']) {
+                                            ?>
+                                        Stok Habis
+                                        <?php
+                                            } else {
+                                            ?>
+                                        <a data-toggle="tooltip" data-placement="top" title="Keluar"
+                                            style="margin-right:5px" class="btn btn-danger btn-sm"
+                                            href="?module=form_obat_keluar&form=add&id=<?php echo $data['id']; ?>">
+                                            <i style="color:#fff" class="glyphicon glyphicon-arrow-right"></i>
+                                        </a>
+                                        <?php
+                                            }
+                                            ?>
+                                    </div>
+                                </td>
+                            </tr>
                             <?php
-                                echo "    </div>
-                      </td>
-                    </tr>";
                                 $no++;
                             }
                             ?>

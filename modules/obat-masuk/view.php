@@ -101,9 +101,7 @@
                       <td width='80' class='center'>$data[nama_user]</td>
                       <td class='center' width='80'>
                         <div>
-                          <a data-toggle='tooltip' data-placement='top' title='Ubah' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_obat_masuk&form=edit&id=$data[id]'>
-                              <i style='color:#fff' class='glyphicon glyphicon-edit'></i>
-                          </a>";
+                          ";
                             ?>
                             <a data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger btn-sm"
                                 href="modules/obat-masuk/proses.php?act=delete&id=<?php echo $data['id']; ?>"
