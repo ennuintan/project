@@ -33,37 +33,31 @@ else {
                                             VALUES('$tanggal_exp','$tanggal_keluar','$kode_obat','$jumlah_keluar','$created_user')")
                 or die('Ada kesalahan pada query insert : ' . mysqli_error($mysqli));
 
+            // cek query
+            if ($query) {
+                // perintah query untuk mengubah data pada tabel obat
+                $query1 = mysqli_query($mysqli, "UPDATE is_obat SET stok        = '$total_stok'
+                WHERE kode_obat   = '$kode_obat'")
+                    or die('Ada kesalahan pada query update : ' . mysqli_error($mysqli));
                 // cek query
                 if ($query1) {
                     // jika berhasil tampilkan pesan berhasil simpan data
                     header("location: ../../main.php?module=obat_keluar&alert=1");
                 }
             }
+        }
     } elseif ($_GET['act'] == 'update') {
         if (isset($_POST['simpan'])) {
-            if (isset($_POST['kode_obat'])) {
+            if (isset($_POST['id'])) {
                 // ambil data hasil submit dari form
-                $tanggal1        = mysqli_real_escape_string($mysqli, trim($_POST['tanggal_exp']));
-                $exp1             = explode('-', $tanggal1);
-                $tanggal_exp   = $exp1[2] . "-" . $exp1[1] . "-" . $exp1[0];
-    
-                $tanggal2         = mysqli_real_escape_string($mysqli, trim($_POST['tanggal_keluar']));
-                $exp2             = explode('-', $tanggal2);
-                $tanggal_keluar   = $exp2[2] . "-" . $exp2[1] . "-" . $exp2[0];
-    
+                $id             = mysqli_real_escape_string($mysqli, trim($_POST['id']));
                 $kode_obat       = mysqli_real_escape_string($mysqli, trim($_POST['kode_obat']));
                 $jumlah_keluar    = mysqli_real_escape_string($mysqli, trim($_POST['jumlah_keluar']));
-                $total_stok      = mysqli_real_escape_string($mysqli, trim($_POST['total_stok']));
-    
-                $created_user    = $_SESSION['id_user'];
 
                 // perintah query untuk mengubah data pada tabel obat
-                $query = mysqli_query($mysqli, "UPDATE is_obat_keluar SET tanggal_exp   = '$tanggal_exp',
-                                                                        tanggal_keluar   = '$tanggal_keluar',
+                $query = mysqli_query($mysqli, "UPDATE is_obat_keluar SET 
                                                                         kode_obat          = '$kode_obat',
                                                                         jumlah_keluar    = '$jumlah_keluar'
-                                                                        total_stok    = '$total_stok'
-                                                                        updated_user    = '$updated_user'
                                                                     WHERE kode_obat       = '$kode_obat'")
                     or die('Ada kesalahan pada query update : ' . mysqli_error($mysqli));
 
@@ -76,7 +70,7 @@ else {
         }
     } elseif ($_GET['act'] == 'delete') {
         if (isset($_GET['id'])) {
-            $kode_obat = $_GET['id'];
+            $id = $_GET['id'];
 
             // perintah query untuk menghapus data pada tabel obat
             $query = mysqli_query($mysqli, "DELETE FROM is_obat_keluar WHERE kode_obat='$kode_obat'")

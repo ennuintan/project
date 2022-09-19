@@ -1,0 +1,38 @@
+1.data obat : fix (pastikan satuan)
+
+2.data bhp : fix (pastikan satuan)
+
+3.data obat masuk : ubah dan hapus blm // hapus done    
+
+4.data obat keluar : ada 2 view
+view 1 kayak di awal skrg nampilkan info tanggal 
+keluar obat 
+view 2 klik tombol 'keluar' menampilkan data dari
+obat masuk supaya ambil id obat masuk untuk
+membedakan/memilih obat sesuai exp nya.
+
+5.data BHP masuk : ubah dan hapus blm
+
+6. data BHP keluar : : ada 2 view
+view 1 kayak di awal skrg nampilkan info tanggal 
+keluar BHP
+view 2 klik tombol 'keluar' menampilkan data dari
+BHP masuk supaya ambil id BHP masuk untuk
+membedakan/memilih BHP sesuai exp nya.
+
+7.laporan stok obat dan BHP : fix
+
+8.laporan obat masuk dan keluar : kolom tabel di 
+tambah tgl_sekarang utk mendeteksi kapan
+laporan di exsport, sisa stok masih belum sesuai
+stok akhir (berlaku untuk laporan BHP masuk dan
+keluar juga)
+
+9.kondisi hapus pada data obat -> ganti query hapus
+fokus pada hapus di tabel obat (kode_obat), untuk
+query informasi pada tampilan lain query hapus
+diganti dengan id sesuai tabel masing-masing
+
+10. kode_obat => id_obat
+
+11. data tabel untuk tabel laporan

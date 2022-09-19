@@ -145,16 +145,7 @@
                 <div class="icon">
                     <i class="fa fa-folder"></i>
                 </div>
-                <?php
-                if ($_SESSION['hak_akses'] != 'Manajer') { ?>
-                <a href="?module=form_obat&form=add" class="small-box-footer" title="Tambah Data"
-                    data-toggle="tooltip"><i class="fa fa-folder"></i></a>
-                <?php
-                } else { ?>
                 <a class="small-box-footer"><i class="fa"></i></a>
-                <?php
-                }
-                ?>
             </div>
         </div><!-- ./col -->
 
@@ -278,16 +269,7 @@
                 <div class="icon">
                     <i class="fa fa-folder"></i>
                 </div>
-                <?php
-                if ($_SESSION['hak_akses'] != 'Manajer') { ?>
-                <a href="?module=form_bhp&form=add" class="small-box-footer" title="Tambah Data"
-                    data-toggle="tooltip"><i class="fa fa-folder"></i></a>
-                <?php
-                } else { ?>
                 <a class="small-box-footer"><i class="fa"></i></a>
-                <?php
-                }
-                ?>
             </div>
         </div><!-- ./col -->
 

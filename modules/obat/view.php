@@ -52,12 +52,12 @@
       }
       #$ambildatastock = mysqli_query($conn,"select * from")
       #elseif ($_GET['alert'] == 4) {
-     #   echo "<div class='alert alert-success alert-dismissable'>
-            #  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-            #  <h4>  <i class='icon fa fa-check-circle'></i> Perhatian!</h4>
-          #    Stok Obat Menipis.
-         #   </div>";
-  
+      #   echo "<div class='alert alert-success alert-dismissable'>
+      #  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+      #  <h4>  <i class='icon fa fa-check-circle'></i> Perhatian!</h4>
+      #    Stok Obat Menipis.
+      #   </div>";
+
       ?>
 
             <div class="box box-primary">
@@ -68,7 +68,7 @@
                         <thead>
                             <tr>
                                 <th class="center">No.</th>
-                                <th class="center">Kode</th>
+                                <th class="center">ID Obat</th>
                                 <th class="center">Nama</th>
                                 <th class="center">Golongan</th>
                                 <th class="center">Stok</th>

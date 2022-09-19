@@ -3,9 +3,9 @@
     <h1>
         <i class="fa fa-sign-in icon-title"></i> Data Obat Masuk
 
-        <a class="btn btn-primary btn-social pull-right" href="?module=form_obat_masuk&form=add" title="Tambah Data"
+        <a class="btn btn-primary btn-social pull-right" href="?module=obat_keluar" title="Tambah Data"
             data-toggle="tooltip">
-            <i class="fa fa-plus"></i> Tambah
+            <i class="fa fa-backward"></i> Kembali
         </a>
     </h1>
 
@@ -62,11 +62,10 @@
                                 <th class="center">No.</th>
                                 <th class="center">Tanggal Exp</th>
                                 <th class="center">Tanggal Masuk</th>
-                                <th class="center">Nama</th>
-                                <th class="center">Jumlah Masuk</th>
+                                <th class="center">Nama Obat</th>
+                                <th class="center">Banyak Obat Masuk</th>
                                 <th class="center">Satuan</th>
-                                <th class="center">User</th>
-                                <!-- <th class="center">Status</th> -->
+                                <th class="center">Status Exp</th>
                                 <th class="center">Action</th>
                             </tr>
                         </thead>
@@ -90,26 +89,30 @@
                                 $exp             = explode('-', $tanggal);
                                 $tanggal_exp   = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
 
+                                $masaaktif = $tanggal_exp;
+                                $sekarang = date("d-m-Y");
+                                $masaberlaku = strtotime($masaaktif) - strtotime($sekarang);
+                                $hasil = $masaberlaku / (24 * 60 * 60);
                                 // menampilkan isi tabel dari database ke tabel di aplikasi
-                                echo "<tr>
+                                echo
+
+
+                                "<tr>
                       <td width='30' class='center'>$no</td>
                       <td width='100' class='center'>$tanggal_exp</td>
                       <td width='80' class='center'>$tanggal_masuk</td>
-                      <td width='200'>$data[nama_obat]</td>
-                      <td width='100' align='center'>$data[jumlah_masuk]</td>
+                      <td width='200' class='center'>$data[nama_obat]</td>
+                      <td width='80' class='center'>$data[jumlah_masuk]</td>
                       <td width='80' class='center'>$data[satuan]</td>
-                      <td width='80' class='center'>$data[nama_user]</td>
+                      <td width='80' class='center'>
+                      $hasil Hari Lagi
+                      </td>                     
                       <td class='center' width='80'>
                         <div>
-                          <a data-toggle='tooltip' data-placement='top' title='Ubah' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_obat_masuk&form=edit&id=$data[id]'>
-                              <i style='color:#fff' class='glyphicon glyphicon-edit'></i>
+                          <a data-toggle='tooltip' data-placement='top' title='Keluar' style='margin-right:5px' class='btn btn-danger btn-sm' href='?module=form_obat_keluar&form=add&id=$data[id]'>
+                              <i style='color:#fff' class='glyphicon glyphicon-arrow-right'></i>
                           </a>";
                             ?>
-                            <a data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger btn-sm"
-                                href="modules/obat-masuk/proses.php?act=delete&id=<?php echo $data['id']; ?>"
-                                onclick="return confirm('Anda yakin ingin menghapus obat <?php echo $data['nama_obat']; ?> ?');">
-                                <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
-                            </a>
                             <?php
                                 echo "    </div>
                       </td>

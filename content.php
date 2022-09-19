@@ -68,6 +68,10 @@ else {
 	elseif ($_GET['module'] == 'form_obat_keluar') {
 		include "modules/obat-keluar/form.php";
 	}
+	// jika halaman konten yang dipilih form obat keluar, panggil file form obat keluar
+	elseif ($_GET['module'] == 'pilih_obat_keluar') {
+		include "modules/obat-keluar/pilih.php";
+	}
 
 	// jika halaman konten yang dipilih bhp keluar, panggil file view bhp masuk
 	elseif ($_GET['module'] == 'bhp_keluar') {

@@ -3,8 +3,8 @@
     <h1>
         <i class="fa fa-sign-out icon-title"></i> Data Obat Keluar
 
-        <a class="btn btn-primary btn-social pull-right" href="?module=form_obat_keluar&form=add" title="Tambah Data"
-            data-toggle="tooltip">
+        <a class="btn btn-primary btn-social pull-right" href="?module=pilih_obat_keluar"
+            title="Tambah Data Obat Keluar" data-toggle="tooltip">
             <i class="fa fa-plus"></i> Keluar
         </a>
     </h1>
@@ -56,7 +56,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            // fungsi query untuk menampilkan data dari tabel obat
+                            // fungsi query untuk menampilkan data dari tabel obat keluar
                             $query = mysqli_query($mysqli, "SELECT a.id, a.tanggal_exp, a.tanggal_keluar,a.kode_obat,a.jumlah_keluar,b.kode_obat,b.nama_obat,b.satuan, c.nama_user
                                             FROM is_obat_keluar as a JOIN is_obat as b ON a.kode_obat=b.kode_obat
                                             JOIN is_users as c ON c.id_user = a.created_user ORDER BY id DESC")
@@ -84,12 +84,12 @@
                       <td width='80' class='center'>$data[nama_user]</td>
                       <td class='center' width='80'>
                         <div>
-                          <a data-toggle='tooltip' data-placement='top' title='Ubah' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_obat&form=edit&id=$data[kode_obat]'>
+                          <a data-toggle='tooltip' data-placement='top' title='Ubah' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_obat_keluar&form=edit&id=$data[id]'>
                               <i style='color:#fff' class='glyphicon glyphicon-edit'></i>
                           </a>";
                             ?>
                             <a data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger btn-sm"
-                                href="modules/obat/proses.php?act=delete&id=<?php echo $data['kode_obat']; ?>"
+                                href="modules/obat/proses.php?act=delete&id=<?php echo $data['id']; ?>"
                                 onclick="return confirm('Anda yakin ingin menghapus obat <?php echo $data['nama_obat']; ?> ?');">
                                 <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
                             </a>
