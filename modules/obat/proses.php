@@ -17,7 +17,6 @@ else {
             $kode_obat  = mysqli_real_escape_string($mysqli, trim($_POST['kode_obat']));
             $nama_obat  = mysqli_real_escape_string($mysqli, trim($_POST['nama_obat']));
             $golongan_obat  = mysqli_real_escape_string($mysqli, trim($_POST['golongan_obat']));
-            // $stok_obat       = mysqli_real_escape_string($mysqli, trim($_POST['stok_obat']));
             $satuan     = mysqli_real_escape_string($mysqli, trim($_POST['satuan']));
 
 
@@ -41,7 +40,6 @@ else {
                 $kode_obat = mysqli_real_escape_string($mysqli, trim($_POST['kode_obat']));
                 $nama_obat = mysqli_real_escape_string($mysqli, trim($_POST['nama_obat']));
                 $golongan_obat = mysqli_real_escape_string($mysqli, trim($_POST['golongan_obat']));
-                // $stok_obat = mysqli_real_escape_string($mysqli, trim($_POST['stok_obat']));
                 $satuan     = mysqli_real_escape_string($mysqli, trim($_POST['satuan']));
 
                 $updated_user = $_SESSION['id_user'];
@@ -49,7 +47,6 @@ else {
                 // perintah query untuk mengubah data pada tabel obat
                 $query = mysqli_query($mysqli, "UPDATE is_obat SET  nama_obat       = '$nama_obat',
                                                                     golongan_obat   = '$golongan_obat',
-                                                                    -- stok            = '$stok_obat',
                                                                     satuan          = '$satuan',
                                                                     updated_user    = '$updated_user'
                                                               WHERE kode_obat       = '$kode_obat'")

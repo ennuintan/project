@@ -190,14 +190,6 @@
                              </div>
                          </div>
 
-                         <!-- <div class="form-group">
-                             <label class="col-sm-2 control-label">Stok obat</label>
-                             <div class="col-sm-5">
-                                 <input type="text" class="form-control" name="stok_obat" autocomplete="off"
-                                     value="<?php echo $data['stok']; ?>" required>
-                             </div>
-                         </div> -->
-
                          <div class="form-group">
                              <label class="col-sm-2 control-label">Satuan</label>
                              <div class="col-sm-5">
