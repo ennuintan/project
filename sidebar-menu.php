@@ -99,7 +99,7 @@ if ($_SESSION['hak_akses'] == 'Super Admin') { ?>
         }
 
         // jika menu data BHP keluar dipilih, menu data BHP keluar aktif
-        if ($_GET["module"] == "bhp_keluar" || $_GET["module"] == "form_bhp_keluar") { ?>
+        if ($_GET["module"] == "bhp_keluar" || $_GET["module"] == "form_bhp_keluar" || $_GET["module"] == "pilih_bhp_keluar") { ?>
     <li class="active">
         <a href="?module=bhp_keluar"><i class="fa fa-sign-out"></i> Data BHP Keluar </a>
     </li>

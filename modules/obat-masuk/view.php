@@ -101,7 +101,7 @@
                       <td width='80' class='center'>$data[nama_user]</td>
                       <td class='center' width='80'>
                         <div>
-                          ";
+                        ";
                             ?>
                             <a data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger btn-sm"
                                 href="modules/obat-masuk/proses.php?act=delete&id=<?php echo $data['id']; ?>"

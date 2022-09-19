@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-folder-o icon-title"></i> Data BHP
+        <i class="fa fa-folder-o icon-title"></i> Data bhp
 
         <a class="btn btn-primary btn-social pull-right" href="?module=form_bhp&form=add" title="Tambah Data"
             data-toggle="tooltip">
@@ -29,7 +29,7 @@
         echo "<div class='alert alert-success alert-dismissable'>
               <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
               <h4>  <i class='icon fa fa-check-circle'></i> Sukses!</h4>
-              Data BHP baru berhasil disimpan.
+              Data bhp baru berhasil disimpan.
             </div>";
       }
       // jika alert = 2
@@ -38,7 +38,7 @@
         echo "<div class='alert alert-success alert-dismissable'>
               <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
               <h4>  <i class='icon fa fa-check-circle'></i> Sukses!</h4>
-              Data BHP berhasil diubah.
+              Data bhp berhasil diubah.
             </div>";
       }
       // jika alert = 3
@@ -47,9 +47,17 @@
         echo "<div class='alert alert-success alert-dismissable'>
               <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
               <h4>  <i class='icon fa fa-check-circle'></i> Sukses!</h4>
-              Data BHP berhasil dihapus.
+              Data bhp berhasil dihapus.
             </div>";
       }
+      #$ambildatastock = mysqli_query($conn,"select * from")
+      #elseif ($_GET['alert'] == 4) {
+      #   echo "<div class='alert alert-success alert-dismissable'>
+      #  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+      #  <h4>  <i class='icon fa fa-check-circle'></i> Perhatian!</h4>
+      #    Stok bhp Menipis.
+      #   </div>";
+
       ?>
 
             <div class="box box-primary">
@@ -60,7 +68,7 @@
                         <thead>
                             <tr>
                                 <th class="center">No.</th>
-                                <th class="center">Kode</th>
+                                <th class="center">ID bhp</th>
                                 <th class="center">Nama</th>
                                 <th class="center">Golongan</th>
                                 <th class="center">Stok</th>
@@ -73,7 +81,7 @@
                             <?php
               $no = 1;
               // fungsi query untuk menampilkan data dari tabel bhp
-              $query = mysqli_query($mysqli, "SELECT kode_bhp,nama_bhp,golongan_bhp,satuan,stok FROM is_bhp ORDER BY kode_bhp DESC")
+              $query = mysqli_query($mysqli, "SELECT kode_bhp,nama_bhp,golongan_bhp,satuan,stok FROM is_bhp ORDER BY nama_bhp ASC")
                 or die('Ada kesalahan pada query tampil Data bhp: ' . mysqli_error($mysqli));
 
               // tampilkan data

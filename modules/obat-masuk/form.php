@@ -183,9 +183,9 @@ elseif ($_GET['form'] == 'edit') {
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Tanggal Masuk</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" data-date-format="dd-mm-yyyy"
+                                <input type="text" class="form-control date-picker" data-date-format="dd-mm-yyyy"
                                     name="tanggal_masuk" autocomplete="off"
-                                    value="<?php echo $data['tanggal_masuk']; ?>" readonly required>
+                                    value="<?php echo $data['tanggal_masuk']; ?>" required>
                             </div>
                         </div>
 

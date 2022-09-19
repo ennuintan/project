@@ -14,18 +14,17 @@ else {
     if ($_GET['act'] == 'insert') {
         if (isset($_POST['simpan'])) {
             // ambil data hasil submit dari form
-            $kode_bhp = mysqli_real_escape_string($mysqli, trim($_POST['kode_bhp']));
-            $nama_bhp = mysqli_real_escape_string($mysqli, trim($_POST['nama_bhp']));
-            $golongan_bhp = mysqli_real_escape_string($mysqli, trim($_POST['golongan_bhp']));
-            $stok_bhp     = mysqli_real_escape_string($mysqli, trim($_POST['stok_bhp']));
+            $kode_bhp  = mysqli_real_escape_string($mysqli, trim($_POST['kode_bhp']));
+            $nama_bhp  = mysqli_real_escape_string($mysqli, trim($_POST['nama_bhp']));
+            $golongan_bhp  = mysqli_real_escape_string($mysqli, trim($_POST['golongan_bhp']));
             $satuan     = mysqli_real_escape_string($mysqli, trim($_POST['satuan']));
 
 
             $created_user = $_SESSION['id_user'];
 
             // perintah query untuk menyimpan data ke tabel bhp
-            $query = mysqli_query($mysqli, "INSERT INTO is_bhp(kode_bhp,nama_bhp,golongan_bhp,stok,satuan,created_user,updated_user) 
-                                            VALUES('$kode_bhp','$nama_bhp','$golongan_bhp','$stok_bhp','$satuan','$created_user','$created_user')")
+            $query = mysqli_query($mysqli, "INSERT INTO is_bhp(kode_bhp,nama_bhp,golongan_bhp,satuan,created_user,updated_user) 
+                                            VALUES('$kode_bhp','$nama_bhp','$golongan_bhp','$satuan','$created_user','$created_user')")
                 or die('Ada kesalahan pada query insert : ' . mysqli_error($mysqli));
 
             // cek query
@@ -41,18 +40,16 @@ else {
                 $kode_bhp = mysqli_real_escape_string($mysqli, trim($_POST['kode_bhp']));
                 $nama_bhp = mysqli_real_escape_string($mysqli, trim($_POST['nama_bhp']));
                 $golongan_bhp = mysqli_real_escape_string($mysqli, trim($_POST['golongan_bhp']));
-                $stok_bhp     = mysqli_real_escape_string($mysqli, trim($_POST['stok_bhp']));
                 $satuan     = mysqli_real_escape_string($mysqli, trim($_POST['satuan']));
 
                 $updated_user = $_SESSION['id_user'];
 
                 // perintah query untuk mengubah data pada tabel bhp
-                $query = mysqli_query($mysqli, "UPDATE is_bhp SET  nama_bhp     = '$nama_bhp',
-                                                                    golongan_bhp = '$golongan_bhp',
-                                                                    stok            = '$stok_bhp',
+                $query = mysqli_query($mysqli, "UPDATE is_bhp SET  nama_bhp       = '$nama_bhp',
+                                                                    golongan_bhp   = '$golongan_bhp',
                                                                     satuan          = '$satuan',
                                                                     updated_user    = '$updated_user'
-                                                              WHERE kode_bhp     = '$kode_bhp'")
+                                                              WHERE kode_bhp       = '$kode_bhp'")
                     or die('Ada kesalahan pada query update : ' . mysqli_error($mysqli));
 
                 // cek query

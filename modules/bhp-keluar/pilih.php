@@ -3,9 +3,9 @@
     <h1>
         <i class="fa fa-sign-in icon-title"></i> Data bhp Masuk
 
-        <a class="btn btn-primary btn-social pull-right" href="?module=form_bhp_masuk&form=add" title="Tambah Data"
+        <a class="btn btn-primary btn-social pull-right" href="?module=bhp_keluar" title="Tambah Data"
             data-toggle="tooltip">
-            <i class="fa fa-plus"></i> Tambah
+            <i class="fa fa-backward"></i> Kembali
         </a>
     </h1>
 
@@ -62,11 +62,11 @@
                                 <th class="center">No.</th>
                                 <th class="center">Tanggal Exp</th>
                                 <th class="center">Tanggal Masuk</th>
-                                <th class="center">Nama</th>
-                                <th class="center">Jumlah Masuk</th>
+                                <th class="center">Nama bhp</th>
+                                <th class="center">Banyak bhp Masuk</th>
+                                <th class="center">Banyak bhp Keluar</th>
                                 <th class="center">Satuan</th>
-                                <th class="center">User</th>
-                                <!-- <th class="center">Status</th> -->
+                                <th class="center">Status Exp</th>
                                 <th class="center">Action</th>
                             </tr>
                         </thead>
@@ -75,13 +75,17 @@
                             <?php
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel bhp
-                            $query = mysqli_query($mysqli, "SELECT a.id, a.tanggal_exp, a.tanggal_masuk,a.kode_bhp,a.jumlah_masuk,b.kode_bhp,b.nama_bhp,b.satuan,c.nama_user
-                                            FROM is_bhp_masuk as a JOIN is_bhp as b ON a.kode_bhp=b.kode_bhp
-                                            JOIN is_users as c ON c.id_user = a.created_user ORDER BY id DESC")
+                            $query = mysqli_query($mysqli, "SELECT a.id, a.tanggal_exp, a.tanggal_masuk,a.kode_bhp,a.jumlah_masuk,d.jumlah_keluar,b.kode_bhp,b.nama_bhp,b.satuan,c.nama_user
+                                            FROM is_bhp_masuk as a 
+                                            JOIN is_bhp as b ON a.kode_bhp = b.kode_bhp 
+                                            JOIN is_users as c ON c.id_user = a.created_user
+                                            LEFT JOIN is_bhp_keluar as d ON a.id = d.id_bhp_masuk 
+                                            ORDER BY id DESC")
                                 or die('Ada kesalahan pada query tampil Data bhp Masuk: ' . mysqli_error($mysqli));
 
                             // tampilkan data
                             while ($data = mysqli_fetch_assoc($query)) {
+                                // var_dump($data);
                                 $tanggal         = $data['tanggal_masuk'];
                                 $exp             = explode('-', $tanggal);
                                 $tanggal_masuk   = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
@@ -90,28 +94,53 @@
                                 $exp             = explode('-', $tanggal);
                                 $tanggal_exp   = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
 
+                                $masaaktif = $tanggal_exp;
+                                $sekarang = date("d-m-Y");
+                                $masaberlaku = strtotime($masaaktif) - strtotime($sekarang);
+                                $hasil = $masaberlaku / (24 * 60 * 60);
                                 // menampilkan isi tabel dari database ke tabel di aplikasi
-                                echo "<tr>
-                      <td width='30' class='center'>$no</td>
-                      <td width='100' class='center'>$tanggal_exp</td>
-                      <td width='80' class='center'>$tanggal_masuk</td>
-                      <td width='200'>$data[nama_bhp]</td>
-                      <td width='100' align='center'>$data[jumlah_masuk]</td>
-                      <td width='80' class='center'>$data[satuan]</td>
-                      <td width='80' class='center'>$data[nama_user]</td>
-                      <td class='center' width='80'>
-                        <div>
-                        ";
                             ?>
-                            <a data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger btn-sm"
-                                href="modules/bhp-masuk/proses.php?act=delete&id=<?php echo $data['id']; ?>"
-                                onclick="return confirm('Anda yakin ingin menghapus bhp <?php echo $data['nama_bhp']; ?> ?');">
-                                <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
-                            </a>
+                            <tr>
+                                <td width='30' class='center'><?= $no ?></td>
+                                <td width='100' class='center'><?= $tanggal_exp ?></td>
+                                <td width='80' class='center'><?= $tanggal_masuk ?></td>
+                                <td width='200' class='center'><?= $data['nama_bhp'] ?></td>
+                                <td width='80' class='center'><?= $data['jumlah_masuk'] ?></td>
+
+                                <?php if ($data['jumlah_keluar'] == NULL) { ?>
+                                <td width='80' class='center'> 0 </td>
+                                <?php
+                                    } else { ?>
+                                <td width='80' class='center'><?= $data['jumlah_keluar'] ?></td>
+                                <?php
+                                    }
+                                    ?>
+
+                                <td width='80' class='center'><?= $data['satuan'] ?></td>
+                                <td width='80' class='center'>
+                                    <?= $hasil ?> Hari Lagi
+                                </td>
+                                <td class='center' width='80'>
+                                    <div>
+                                        <?php
+                                            if ($data['jumlah_masuk'] == $data['jumlah_keluar']) {
+                                            ?>
+                                        Stok Habis
+                                        <?php
+                                            } else {
+                                            ?>
+                                        <a data-toggle="tooltip" data-placement="top" title="Keluar"
+                                            style="margin-right:5px" class="btn btn-danger btn-sm"
+                                            href="?module=form_bhp_keluar&form=add&id=<?php echo $data['id']; ?>">
+                                            <i style="color:#fff" class="glyphicon glyphicon-arrow-right"></i>
+                                        </a>
+                                        <?php
+                                            }
+                                            ?>
+                                    </div>
+                                </td>
+                            </tr>
                             <?php
-                                echo "    </div>
-                      </td>
-                    </tr>";
                                 $no++;
                             }
                             ?>

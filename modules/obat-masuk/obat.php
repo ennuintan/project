@@ -34,7 +34,7 @@ if (isset($_POST['dataidobat'])) {
                 <div class='col-sm-5'>
                   <div class='input-group'>
                     <input type='text' class='form-control' id='stok' name='stok' value='$stoknull' readonly>
-                    <span class='input-group-addon'>$stoknull</span>
+                    <span class='input-group-addon'>$satuan</span>
                   </div>
                 </div>
               </div>";

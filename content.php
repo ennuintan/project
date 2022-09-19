@@ -79,6 +79,11 @@ else {
 	}
 
 	// jika halaman konten yang dipilih form bhp keluar, panggil file form bhp keluar
+	elseif ($_GET['module'] == 'pilih_bhp_keluar') {
+		include "modules/bhp-keluar/pilih.php";
+	}
+
+	// jika halaman konten yang dipilih form bhp keluar, panggil file form bhp keluar
 	elseif ($_GET['module'] == 'form_bhp_keluar') {
 		include "modules/bhp-keluar/form.php";
 	}
@@ -87,8 +92,7 @@ else {
 	// jika halaman konten yang dipilih laporan stok, panggil file view laporan stok
 	elseif ($_GET['module'] == 'lap_stok') {
 		include "modules/lap-stok/view.php";
-	}
-	elseif ($_GET['module'] == 'lap_stok_bhp') {
+	} elseif ($_GET['module'] == 'lap_stok_bhp') {
 		include "modules/lap-stok-bhp/view.php";
 	}
 	// -----------------------------------------------------------------------------
