@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-folder-o icon-title"></i> Data bhp
+        <i class="fa fa-folder-o icon-title"></i> Data BHP
 
         <a class="btn btn-primary btn-social pull-right" href="?module=form_bhp&form=add" title="Tambah Data"
             data-toggle="tooltip">

@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-sign-out icon-title"></i> Data bhp Keluar
+        <i class="fa fa-sign-out icon-title"></i> Data BHP Keluar
 
         <a class="btn btn-primary btn-social pull-right" href="?module=pilih_bhp_keluar" title="Tambah Data bhp Keluar"
             data-toggle="tooltip">
@@ -62,8 +62,8 @@
                                 <th class="center">No.</th>
                                 <th class="center">Tanggal Exp</th>
                                 <th class="center">Tanggal Keluar</th>
-                                <th class="center">Kode bhp</th>
-                                <th class="center">Nama bhp</th>
+                                <th class="center">Kode BHP</th>
+                                <th class="center">Nama BHP</th>
                                 <th class="center">Jumlah Keluar</th>
                                 <th class="center">Satuan</th>
                                 <th class="center">User</th>
@@ -102,7 +102,7 @@
                       <td width='80' class='center'>$data[nama_user]</td>
                       <td class='center' width='80'>
                         <div>
-                          ";
+                        ";
                             ?>
                             <a data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger btn-sm"
                                 href="modules/bhp-keluar/proses.php?act=delete&id=<?php echo $data['id']; ?>"

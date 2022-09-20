@@ -4,12 +4,12 @@ session_start();
 // Panggil koneksi database.php untuk koneksi database
 require_once "../../config/database.php";
 
-if(isset($_POST['dataidbhp'])) {
-	$kode_bhp = $_POST['dataidbhp'];
+if (isset($_POST['dataidbhp'])) {
+  $kode_bhp = $_POST['dataidbhp'];
 
   // fungsi query untuk menampilkan data dari tabel bhp
   $query = mysqli_query($mysqli, "SELECT kode_bhp,nama_bhp,satuan,stok FROM is_bhp WHERE kode_bhp='$kode_bhp'")
-                                  or die('Ada kesalahan pada query tampil data bhp: '.mysqli_error($mysqli));
+    or die('Ada kesalahan pada query tampil data bhp: ' . mysqli_error($mysqli));
 
   // tampilkan data
   $data = mysqli_fetch_assoc($query);
@@ -17,8 +17,8 @@ if(isset($_POST['dataidbhp'])) {
   $stok   = $data['stok'];
   $satuan = $data['satuan'];
 
-	if($stok != '') {
-		echo "<div class='form-group'>
+  if ($stok != '') {
+    echo "<div class='form-group'>
                 <label class='col-sm-2 control-label'>Stok</label>
                 <div class='col-sm-5'>
                   <div class='input-group'>
@@ -27,8 +27,8 @@ if(isset($_POST['dataidbhp'])) {
                   </div>
                 </div>
               </div>";
-	} else {
-		echo "<div class='form-group'>
+  } else {
+    echo "<div class='form-group'>
                 <label class='col-sm-2 control-label'>Stok</label>
                 <div class='col-sm-5'>
                   <div class='input-group'>
@@ -37,5 +37,5 @@ if(isset($_POST['dataidbhp'])) {
                   </div>
                 </div>
               </div>";
-	}		
+  }
 }

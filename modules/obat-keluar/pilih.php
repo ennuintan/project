@@ -75,12 +75,12 @@
                             <?php
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel obat
-                            $query = mysqli_query($mysqli, "SELECT a.id, a.tanggal_exp, a.tanggal_masuk,a.kode_obat,a.jumlah_masuk,d.jumlah_keluar,b.kode_obat,b.nama_obat,b.satuan,c.nama_user
-                                            FROM is_obat_masuk as a 
-                                            JOIN is_obat as b ON a.kode_obat = b.kode_obat 
-                                            JOIN is_users as c ON c.id_user = a.created_user
-                                            LEFT JOIN is_obat_keluar as d ON a.id = d.id_obat_masuk 
-                                            ORDER BY id DESC")
+                            $query = mysqli_query($mysqli, "SELECT 
+                            a.id, a.tanggal_exp, a.tanggal_masuk,a.kode_obat,a.jumlah_masuk, SUM(c.jumlah_keluar) as jumlah_keluar,b.kode_obat,b.nama_obat,b.satuan
+                                                        FROM is_obat_masuk as a 
+                                                        JOIN is_obat as b ON b.kode_obat = a.kode_obat 
+                                                        LEFT JOIN is_obat_keluar as c ON c.id_obat_masuk = a.id
+                                                        GROUP BY a.id")
                                 or die('Ada kesalahan pada query tampil Data Obat Masuk: ' . mysqli_error($mysqli));
 
                             // tampilkan data
@@ -127,11 +127,19 @@
                                             ?>
                                         Stok Habis
                                         <?php
-                                            } else {
+                                            } elseif ($data['jumlah_keluar'] == NULL) {
                                             ?>
                                         <a data-toggle="tooltip" data-placement="top" title="Keluar"
                                             style="margin-right:5px" class="btn btn-danger btn-sm"
                                             href="?module=form_obat_keluar&form=add&id=<?php echo $data['id']; ?>">
+                                            <i style="color:#fff" class="glyphicon glyphicon-arrow-right"></i>
+                                        </a>
+                                        <?php
+                                            } else {
+                                            ?>
+                                        <a data-toggle="tooltip" data-placement="top" title="Keluar"
+                                            style="margin-right:5px" class="btn btn-warning btn-sm"
+                                            href="?module=form_obat_keluar&form=update&id=<?php echo $data['id']; ?>">
                                             <i style="color:#fff" class="glyphicon glyphicon-arrow-right"></i>
                                         </a>
                                         <?php

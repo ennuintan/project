@@ -59,23 +59,46 @@ else {
         }
     } elseif ($_GET['act'] == 'update') {
         if (isset($_POST['simpan'])) {
-            if (isset($_POST['id'])) {
-                // ambil data hasil submit dari form
-                $id             = mysqli_real_escape_string($mysqli, trim($_POST['id']));
-                $kode_bhp       = mysqli_real_escape_string($mysqli, trim($_POST['kode_bhp']));
-                $jumlah_keluar    = mysqli_real_escape_string($mysqli, trim($_POST['jumlah_keluar']));
 
-                // perintah query untuk mengubah data pada tabel bhp
-                $query = mysqli_query($mysqli, "UPDATE is_bhp_keluar SET 
-                                                                        kode_bhp          = '$kode_bhp',
-                                                                        jumlah_keluar    = '$jumlah_keluar'
-                                                                    WHERE kode_bhp       = '$kode_bhp'")
+            $id_bhp_masuk   = $_POST['id'];
+            // ambil data hasil submit dari form
+            $tanggal1        = mysqli_real_escape_string($mysqli, trim($_POST['tanggal_exp']));
+            $exp1            = explode('-', $tanggal1);
+            $tanggal_exp     = $exp1[2] . "-" . $exp1[1] . "-" . $exp1[0];
+
+            $tanggal2        = mysqli_real_escape_string($mysqli, trim($_POST['tanggal_keluar']));
+            $exp2            = explode('-', $tanggal2);
+            $tanggal_keluar  = $exp2[2] . "-" . $exp2[1] . "-" . $exp2[0];
+
+            $kode_bhp       = mysqli_real_escape_string($mysqli, trim($_POST['kode_bhp']));
+            $jumlah_keluar   = mysqli_real_escape_string($mysqli, trim($_POST['jumlah_keluar']));
+
+            $created_user    = $_SESSION['id_user'];
+
+            // perintah query untuk menyimpan data ke tabel bhp keluar
+            $query = mysqli_query($mysqli, "INSERT INTO is_bhp_keluar(id_bhp_masuk,tanggal_exp,tanggal_keluar,kode_bhp,jumlah_keluar,created_user) 
+                                            VALUES('$id_bhp_masuk','$tanggal_exp','$tanggal_keluar','$kode_bhp','$jumlah_keluar','$created_user')")
+                or die('Ada kesalahan pada query insert : ' . mysqli_error($mysqli));
+
+            // cek query
+            if ($query) {
+
+                $query1 = mysqli_query($mysqli, "SELECT * FROM is_bhp  WHERE kode_bhp = '$kode_bhp'")
                     or die('Ada kesalahan pada query update : ' . mysqli_error($mysqli));
 
-                // cek query
-                if ($query) {
-                    // jika berhasil tampilkan pesan berhasil update data
-                    header("location: ../../main.php?module=bhp_keluar&alert=2");
+                while ($data = mysqli_fetch_assoc($query1)) {
+                    // var_dump($data);
+                    // die();
+                    $stok          = $data['stok'];
+
+                    // perintah query untuk mengubah data pada tabel bhp
+                    $query2 = mysqli_query($mysqli, "UPDATE is_bhp SET stok = '$stok' - '$jumlah_keluar' WHERE kode_bhp = '$kode_bhp'")
+                        or die('Ada kesalahan pada query update : ' . mysqli_error($mysqli));
+                    // cek query
+                    if ($query2) {
+                        // jika berhasil tampilkan pesan berhasil simpan data
+                        header("location: ../../main.php?module=bhp_keluar&alert=1");
+                    }
                 }
             }
         }

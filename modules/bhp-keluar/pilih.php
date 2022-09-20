@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-sign-in icon-title"></i> Data bhp Masuk
+        <i class="fa fa-sign-in icon-title"></i> Data BHP Masuk
 
         <a class="btn btn-primary btn-social pull-right" href="?module=bhp_keluar" title="Tambah Data"
             data-toggle="tooltip">
@@ -62,9 +62,9 @@
                                 <th class="center">No.</th>
                                 <th class="center">Tanggal Exp</th>
                                 <th class="center">Tanggal Masuk</th>
-                                <th class="center">Nama bhp</th>
-                                <th class="center">Banyak bhp Masuk</th>
-                                <th class="center">Banyak bhp Keluar</th>
+                                <th class="center">Nama BHP</th>
+                                <th class="center">Banyak BHP Masuk</th>
+                                <th class="center">Banyak BHP Keluar</th>
                                 <th class="center">Satuan</th>
                                 <th class="center">Status Exp</th>
                                 <th class="center">Action</th>
@@ -75,12 +75,12 @@
                             <?php
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel bhp
-                            $query = mysqli_query($mysqli, "SELECT a.id, a.tanggal_exp, a.tanggal_masuk,a.kode_bhp,a.jumlah_masuk,d.jumlah_keluar,b.kode_bhp,b.nama_bhp,b.satuan,c.nama_user
-                                            FROM is_bhp_masuk as a 
-                                            JOIN is_bhp as b ON a.kode_bhp = b.kode_bhp 
-                                            JOIN is_users as c ON c.id_user = a.created_user
-                                            LEFT JOIN is_bhp_keluar as d ON a.id = d.id_bhp_masuk 
-                                            ORDER BY id DESC")
+                            $query = mysqli_query($mysqli, "SELECT 
+                            a.id, a.tanggal_exp, a.tanggal_masuk,a.kode_bhp,a.jumlah_masuk, SUM(c.jumlah_keluar) as jumlah_keluar,b.kode_bhp,b.nama_bhp,b.satuan
+                                                        FROM is_bhp_masuk as a 
+                                                        JOIN is_bhp as b ON b.kode_bhp = a.kode_bhp 
+                                                        LEFT JOIN is_bhp_keluar as c ON c.id_bhp_masuk = a.id
+                                                        GROUP BY a.id")
                                 or die('Ada kesalahan pada query tampil Data bhp Masuk: ' . mysqli_error($mysqli));
 
                             // tampilkan data
@@ -127,11 +127,19 @@
                                             ?>
                                         Stok Habis
                                         <?php
-                                            } else {
+                                            } elseif ($data['jumlah_keluar'] == NULL) {
                                             ?>
                                         <a data-toggle="tooltip" data-placement="top" title="Keluar"
                                             style="margin-right:5px" class="btn btn-danger btn-sm"
                                             href="?module=form_bhp_keluar&form=add&id=<?php echo $data['id']; ?>">
+                                            <i style="color:#fff" class="glyphicon glyphicon-arrow-right"></i>
+                                        </a>
+                                        <?php
+                                            } else {
+                                            ?>
+                                        <a data-toggle="tooltip" data-placement="top" title="Keluar"
+                                            style="margin-right:5px" class="btn btn-warning btn-sm"
+                                            href="?module=form_bhp_keluar&form=update&id=<?php echo $data['id']; ?>">
                                             <i style="color:#fff" class="glyphicon glyphicon-arrow-right"></i>
                                         </a>
                                         <?php

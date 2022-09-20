@@ -42,7 +42,7 @@ if ($_GET['form'] == 'add') { ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-edit icon-title"></i> Input Data bhp Masuk
+        <i class="fa fa-edit icon-title"></i> Input Data BHP Masuk
     </h1>
     <ol class="breadcrumb">
         <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda </a></li>
@@ -160,7 +160,7 @@ elseif ($_GET['form'] == 'edit') {
 
 <section class="content-header">
     <h1>
-        <i class="fa fa-edit icon-title"></i> Ubah Data bhp Masuk
+        <i class="fa fa-edit icon-title"></i> Ubah Data BHP Masuk
     </h1>
     <ol class="breadcrumb">
         <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda </a></li>

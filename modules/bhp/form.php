@@ -6,7 +6,7 @@ if ($_GET['form'] == 'add') { ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-edit icon-title"></i> Input bhp
+        <i class="fa fa-edit icon-title"></i> Input BHP
     </h1>
     <ol class="breadcrumb">
         <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda </a></li>
@@ -129,7 +129,7 @@ elseif ($_GET['form'] == 'edit') {
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-edit icon-title"></i> Ubah bhp
+        <i class="fa fa-edit icon-title"></i> Ubah BHP
     </h1>
     <ol class="breadcrumb">
         <li><a href="?module=beranda"><i class="fa fa-home"></i> Beranda </a></li>
