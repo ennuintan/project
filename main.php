@@ -21,7 +21,9 @@ session_start();
     <!-- FontAwesome 4.3.0 -->
     <link href="assets/plugins/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- DATA TABLES -->
-    <link href="assets/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="assets/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" /> -->
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" />
     <!-- Datepicker -->
     <link href="assets/plugins/datepicker/datepicker.min.css" rel="stylesheet" type="text/css" />
     <!-- Chosen Select -->
@@ -163,8 +165,8 @@ session_start();
     <!-- chosen select -->
     <script src="assets/plugins/chosen/js/chosen.jquery.min.js"></script>
     <!-- DATA TABES SCRIPT -->
-    <script src="assets/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="assets/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+    <!-- <script src="assets/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script> -->
+    <!-- <script src="assets/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script> -->
     <!-- Datepicker -->
     <script src="assets/plugins/datepicker/bootstrap-datepicker.min.js" type="text/javascript"></script>
     <!-- Slimscroll -->
@@ -244,6 +246,25 @@ session_start();
         });
     });
     </script>
+
+    <script>
+    $(document).ready(function() {
+        $('#LaporanData').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel', 'print'
+            ]
+        });
+    });
+    </script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
 
 </body>
 

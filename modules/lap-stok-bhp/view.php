@@ -17,7 +17,7 @@
             <div class="box box-primary">
                 <div class="box-body">
                     <!-- tampilan tabel bhp -->
-                    <table id="dataTables1" class="table table-bordered table-striped table-hover">
+                    <table id="LaporanData" class="table table-bordered table-striped table-hover">
                         <!-- tampilan tabel header -->
                         <thead>
                             <tr>

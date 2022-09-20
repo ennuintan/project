@@ -19,7 +19,7 @@
             <div class="box box-primary">
                 <div class="box-body">
                     <!-- tampilan tabel bhp -->
-                    <table id="dataTables1" class="table table-bordered table-striped table-hover">
+                    <table id="LaporanData" class="table table-bordered table-striped table-hover">
                         <!-- tampilan tabel header -->
                         <thead>
                             <tr>
@@ -43,28 +43,35 @@
                             <?php
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel bhp
-                            $query = mysqli_query($mysqli, "SELECT is_bhp.kode_bhp, is_bhp.nama_bhp, is_bhp.golongan_bhp, is_bhp.satuan, is_bhp_masuk.jumlah_masuk, is_bhp_keluar.jumlah_keluar, is_bhp.stok, is_bhp_masuk.tanggal_exp, is_bhp_masuk.tanggal_masuk, is_bhp_keluar.tanggal_keluar, is_bhp_masuk.created_user, is_bhp_keluar.created_user FROM is_bhp JOIN is_bhp_masuk ON is_bhp.kode_bhp = is_bhp_masuk.kode_bhp JOIN is_bhp_keluar ON is_bhp.kode_bhp = is_bhp_keluar.kode_bhp")
+                            $query = mysqli_query($mysqli, "SELECT is_bhp.kode_bhp, is_bhp.nama_bhp, is_bhp.golongan_bhp, is_bhp.satuan, is_bhp_masuk.jumlah_masuk, is_bhp_keluar.jumlah_keluar, is_bhp.stok, is_bhp_masuk.tanggal_exp, is_bhp_masuk.tanggal_masuk, is_bhp_keluar.tanggal_keluar, is_bhp_masuk.created_user, is_bhp_keluar.created_user, is_users.id_user, is_users.nama_user  
+                            FROM is_bhp 
+                            JOIN is_bhp_masuk ON is_bhp.kode_bhp = is_bhp_masuk.kode_bhp 
+                            JOIN is_bhp_keluar ON is_bhp.kode_bhp = is_bhp_keluar.kode_bhp
+                            JOIN is_users ON is_users.id_user = is_bhp_masuk.created_user
+                            ")
                                 or die('Ada kesalahan pada query tampil Data bhp: ' . mysqli_error($mysqli));
                             // tampilkan data
                             while ($data = mysqli_fetch_assoc($query)) {
                                 // $harga_beli = format_rupiah($data['harga_beli']);
                                 // $harga_jual = format_rupiah($data['harga_jual']);
                                 // menampilkan isi tabel dari database ke tabel di aplikasi
-                                echo "<tr>
-                      <td>$no</td>
-                      <td>$data[kode_bhp]</td>
-                      <td>$data[nama_bhp]</td>
-                      <td>$data[golongan_bhp]</td>
-                      <td>$data[satuan]</td>
-                      <td>$data[jumlah_masuk]</td>
-                      <td>$data[jumlah_keluar]</td>
-                      <td>$data[stok]</td>
-                      <td>$data[tanggal_exp]</td>
-                      <td>$data[tanggal_masuk]</td>
-                      <td>$data[tanggal_keluar]</td>
-                      <td>$data[created_user]</td>
-                      <td>$data[created_user]</td>
-                    </tr>";
+                            ?>
+                            <tr>
+                                <td><?= $no ?></td>
+                                <td><?= $data['kode_bhp'] ?></td>
+                                <td><?= $data['nama_bhp'] ?></td>
+                                <td><?= $data['golongan_bhp'] ?></td>
+                                <td><?= $data['satuan'] ?></td>
+                                <td><?= $data['jumlah_masuk'] ?></td>
+                                <td><?= $data['jumlah_keluar'] ?></td>
+                                <td><?= $data['stok'] ?></td>
+                                <td><?= $data['tanggal_exp'] ?></td>
+                                <td><?= $data['tanggal_masuk'] ?></td>
+                                <td><?= $data['tanggal_keluar'] ?></td>
+                                <td><?= $data['nama_user'] ?></td>
+                                <td><?= $data['nama_user'] ?></td>
+                            </tr>
+                            <?php
                                 $no++;
                             }
                             ?>

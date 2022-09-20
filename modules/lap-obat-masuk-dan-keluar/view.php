@@ -19,7 +19,7 @@
             <div class="box box-primary">
                 <div class="box-body">
                     <!-- tampilan tabel obat -->
-                    <table id="dataTables1" class="table table-bordered table-striped table-hover">
+                    <table id="LaporanData" class="table table-bordered table-striped table-hover">
                         <!-- tampilan tabel header -->
                         <thead>
                             <tr>
@@ -43,7 +43,12 @@
                             <?php
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel obat
-                            $query = mysqli_query($mysqli, "SELECT is_obat.kode_obat, is_obat.nama_obat, is_obat.golongan_obat, is_obat.satuan, is_obat_masuk.jumlah_masuk, is_obat_keluar.jumlah_keluar, is_obat.stok, is_obat_masuk.tanggal_exp, is_obat_masuk.tanggal_masuk, is_obat_keluar.tanggal_keluar, is_obat_masuk.created_user, is_obat_keluar.created_user FROM is_obat JOIN is_obat_masuk ON is_obat.kode_obat = is_obat_masuk.kode_obat JOIN is_obat_keluar ON is_obat.kode_obat = is_obat_keluar.kode_obat")
+                            $query = mysqli_query($mysqli, "SELECT is_obat.kode_obat, is_obat.nama_obat, is_obat.golongan_obat, is_obat.satuan, is_obat_masuk.jumlah_masuk, is_obat_keluar.jumlah_keluar, is_obat.stok, is_obat_masuk.tanggal_exp, is_obat_masuk.tanggal_masuk, is_obat_keluar.tanggal_keluar, is_obat_masuk.created_user, is_obat_keluar.created_user, is_users.id_user, is_users.nama_user 
+                            FROM is_obat 
+                            JOIN is_obat_masuk ON is_obat.kode_obat = is_obat_masuk.kode_obat 
+                            JOIN is_obat_keluar ON is_obat.kode_obat = is_obat_keluar.kode_obat
+                            JOIN is_users ON is_users.id_user = is_obat_masuk.created_user
+                            ")
                                 or die('Ada kesalahan pada query tampil Data Obat: ' . mysqli_error($mysqli));
                             // tampilkan data
                             while ($data = mysqli_fetch_assoc($query)) {
@@ -62,8 +67,8 @@
                       <td>$data[tanggal_exp]</td>
                       <td>$data[tanggal_masuk]</td>
                       <td>$data[tanggal_keluar]</td>
-                      <td>$data[created_user]</td>
-                      <td>$data[created_user]</td>
+                      <td>$data[nama_user]</td>
+                      <td>$data[nama_user]</td>
                     </tr>";
                                 $no++;
                             }
