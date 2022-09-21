@@ -99,6 +99,17 @@
                                 $masaberlaku = strtotime($masaaktif) - strtotime($sekarang);
                                 $hasil = $masaberlaku / (24 * 60 * 60);
                                 // menampilkan isi tabel dari database ke tabel di aplikasi
+
+                                // menggunakan tahun,bulan,hari
+                                $sekarang   = date("m");
+                                $awal       = new DateTime($tanggal_exp);
+                                $akhir      = new DateTime(); // Waktu sekarang
+                                $diff       = $awal->diff($akhir);
+
+                                $startdate  = $tanggal_exp;
+                                $expire     = strtotime($startdate);
+                                $now        = date("d-m-Y");
+                                $today      = strtotime($now);
                             ?>
                             <tr>
                                 <td width='30' class='center'><?= $no ?></td>
@@ -118,7 +129,23 @@
 
                                 <td width='80' class='center'><?= $data['satuan'] ?></td>
                                 <td width='80' class='center'>
-                                    <?= $hasil ?> Hari Lagi
+
+                                    <?php if (($diff->y) == NULL && ($diff->m) == $sekarang) { ?>
+                                    <?= $diff->format('%m bulan %d hari'); ?>
+
+                                    <?php } elseif ($expire < $today) { ?>
+                                    Sudah Exp
+
+                                    <?php } elseif (($diff->y) == NULL && ($diff->m) == NULL) { ?>
+                                    <?= $diff->format('%d hari'); ?>
+
+                                    <?php } elseif (($diff->y) == NULL) { ?>
+                                    <?= $diff->format('%m bulan %d hari'); ?>
+
+                                    <?php } else {
+                                            echo $diff->format('%y tahun %m bulan %d hari');
+                                        } ?>
+
                                 </td>
                                 <td class='center' width='80'>
                                     <div>
