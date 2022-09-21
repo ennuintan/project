@@ -133,7 +133,7 @@
                                     <?php if (($diff->y) == NULL && ($diff->m) == $sekarang) { ?>
                                     <?= $diff->format('%m bulan %d hari'); ?>
 
-                                    <?php } elseif ($expire < $today) { ?>
+                                    <?php } elseif ($expire <= $today) { ?>
                                     Sudah Exp
 
                                     <?php } elseif (($diff->y) == NULL && ($diff->m) == NULL) { ?>
@@ -153,6 +153,18 @@
                                             if ($data['jumlah_masuk'] == $data['jumlah_keluar']) {
                                             ?>
                                         Stok Habis
+                                        <?php } elseif ($expire <= $today && $data['jumlah_keluar'] == NULL) { ?>
+                                        <a data-toggle="tooltip" data-placement="top" title="Berbahaya"
+                                            style="margin-right:5px" class="btn btn-danger btn-sm"
+                                            href="?module=form_obat_keluar&form=add&id=<?php echo $data['id']; ?>">
+                                            <i style="color:#fff" class="glyphicon glyphicon-alert"></i>
+                                        </a>
+                                        <?php } elseif ($expire <= $today) { ?>
+                                        <a data-toggle="tooltip" data-placement="top" title="Berbahaya"
+                                            style="margin-right:5px" class="btn btn-danger btn-sm"
+                                            href="?module=form_obat_keluar&form=update&id=<?php echo $data['id']; ?>">
+                                            <i style="color:#fff" class="glyphicon glyphicon-alert"></i>
+                                        </a>
                                         <?php
                                             } elseif ($data['jumlah_keluar'] == NULL) {
                                             ?>
