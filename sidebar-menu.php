@@ -425,7 +425,7 @@ if ($_SESSION['hak_akses'] == 'Gudang') { ?>
         }
 
         // jika menu data obat keluar dipilih, menu data obat keluar aktif
-        if ($_GET["module"] == "obat_keluar" || $_GET["module"] == "form_obat_keluar") { ?>
+        if ($_GET["module"] == "obat_keluar" || $_GET["module"] == "form_obat_keluar" || $_GET["module"] == "pilih_obat_keluar") { ?>
     <li class="active">
         <a href="?module=obat_keluar"><i class="fa fa-sign-out"></i> Data Obat Keluar</a>
     </li>
@@ -454,7 +454,7 @@ if ($_SESSION['hak_akses'] == 'Gudang') { ?>
         }
 
         // jika menu data BHP keluar dipilih, menu data BHP keluar aktif
-        if ($_GET["module"] == "bhp_keluar" || $_GET["module"] == "form_bhp_keluar") { ?>
+        if ($_GET["module"] == "bhp_keluar" || $_GET["module"] == "form_bhp_keluar" || $_GET["module"] == "pilih_bhp_keluar") { ?>
     <li class="active">
         <a href="?module=bhp_keluar"><i class="fa fa-sign-out"></i> Data BHP Keluar </a>
     </li>
