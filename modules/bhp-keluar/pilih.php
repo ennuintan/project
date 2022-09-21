@@ -95,10 +95,10 @@
                                 $tanggal_exp     = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
 
                                 // menggunakan hari
-                                $masaaktif = $tanggal_exp;
-                                $tgl = date("d-m-Y");
-                                $masaberlaku = strtotime($masaaktif) - strtotime($tgl);
-                                $hasil = $masaberlaku / (24 * 60 * 60);
+                                // $masaaktif = $tanggal_exp;
+                                // $tgl = date("d-m-Y");
+                                // $masaberlaku = strtotime($masaaktif) - strtotime($tgl);
+                                // $hasil = $masaberlaku / (24 * 60 * 60);
                                 // menampilkan isi tabel dari database ke tabel di aplikasi
 
                                 // menggunakan tahun,bulan,hari
