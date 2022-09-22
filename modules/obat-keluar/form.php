@@ -116,7 +116,7 @@ if ($_GET['form'] == 'add') { ?>
                             <div class=" form-group">
                                 <label class="col-sm-2 control-label">Stok Masuk</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="stok" name="stok"
+                                    <input type="text" class="form-control" id="stokobat" name="stok"
                                         value="<?php echo $data['jumlah_masuk']; ?>" readonly>
                                 </div>
                             </div>

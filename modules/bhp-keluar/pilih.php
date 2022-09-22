@@ -94,23 +94,17 @@
                                 $exp             = explode('-', $tanggal);
                                 $tanggal_exp     = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
 
-                                // menggunakan hari
-                                // $masaaktif = $tanggal_exp;
-                                // $tgl = date("d-m-Y");
-                                // $masaberlaku = strtotime($masaaktif) - strtotime($tgl);
-                                // $hasil = $masaberlaku / (24 * 60 * 60);
+                                $masaaktif = $tanggal_exp;
+                                $sekarang = date("d-m-Y");
+                                $masaberlaku = strtotime($masaaktif) - strtotime($sekarang);
+                                $hasil = $masaberlaku / (24 * 60 * 60);
                                 // menampilkan isi tabel dari database ke tabel di aplikasi
 
                                 // menggunakan tahun,bulan,hari
                                 $sekarang   = date("m");
                                 $awal       = new DateTime($tanggal_exp);
-                                $akhir      = new DateTime(); // Waktu sekarang
+                                $akhir      = new DateTime("today midnight"); // Waktu sekarang
                                 $diff       = $awal->diff($akhir);
-
-                                $startdate  = $tanggal_exp;
-                                $expire     = strtotime($startdate);
-                                $now        = date("d-m-Y");
-                                $today      = strtotime($now);
 
                             ?>
                             <tr>
@@ -134,7 +128,7 @@
                                     <?php if (($diff->y) == NULL && ($diff->m) == $sekarang) { ?>
                                     <?= $diff->format('%m bulan %d hari'); ?>
 
-                                    <?php } elseif ($expire <= $today) { ?>
+                                    <?php } elseif ($awal <= $akhir) { ?>
                                     Sudah Exp
 
                                     <?php } elseif (($diff->y) == NULL && ($diff->m) == NULL) { ?>
@@ -154,13 +148,13 @@
                                             if ($data['jumlah_masuk'] == $data['jumlah_keluar']) {
                                             ?>
                                         Stok Habis
-                                        <?php } elseif ($expire <= $today && $data['jumlah_keluar'] == NULL) { ?>
+                                        <?php } elseif ($awal <= $akhir && $data['jumlah_keluar'] == NULL) { ?>
                                         <a data-toggle="tooltip" data-placement="top" title="Berbahaya"
                                             style="margin-right:5px" class="btn btn-danger btn-sm"
                                             href="?module=form_bhp_keluar&form=add&id=<?php echo $data['id']; ?>">
                                             <i style="color:#fff" class="glyphicon glyphicon-alert"></i>
                                         </a>
-                                        <?php } elseif ($expire <= $today) { ?>
+                                        <?php } elseif ($awal <= $akhir) { ?>
                                         <a data-toggle="tooltip" data-placement="top" title="Berbahaya"
                                             style="margin-right:5px" class="btn btn-danger btn-sm"
                                             href="?module=form_bhp_keluar&form=update&id=<?php echo $data['id']; ?>">
