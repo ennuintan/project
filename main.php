@@ -247,16 +247,29 @@ session_start();
     });
     </script>
 
-    <script>
+    <script type="text/javascript">
     $(document).ready(function() {
-        $('#LaporanData').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'csv', 'excel', 'print'
-            ]
+        var table = $('#LaporanData').DataTable({
+            dom: 'lBrtip',
+            buttons: [{
+                    extend: 'print',
+                    text: '<i class="fas fa-file-print fa-1x" aria-hidden="true"> Export a Print</i>'
+                },
+                {
+                    extend: 'csv',
+                    text: '<i class="fas fa-file-csv fa-1x"> Export a CSV</i>'
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fas fa-file-excel" aria-hidden="true"> Export a Excel</i>'
+                },
+            ],
         });
+        table.buttons().container()
+            .appendTo('#datatable_wrapper.col-md-6:eq(0)');
     });
     </script>
+
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
