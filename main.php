@@ -249,8 +249,12 @@ session_start();
 
     <script type="text/javascript">
     $(document).ready(function() {
-        var table = $('#LaporanData').DataTable({
-            dom: 'lBrtip',
+        $("#LaporanData").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
+            dom: 'Blfrtip',
+            lengthMenu: [
+                [10, 25, 50, -1],
+                ['10 rows', '25 rows', '50 rows', 'Show all']
+            ],
             buttons: [{
                     extend: 'print',
                     text: '<i class="fas fa-file-print fa-1x" aria-hidden="true"> Export a Print</i>'
@@ -265,8 +269,6 @@ session_start();
                 },
             ],
         });
-        table.buttons().container()
-            .appendTo('#datatable_wrapper.col-md-6:eq(0)');
     });
     </script>
 
